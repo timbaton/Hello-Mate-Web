@@ -1,4 +1,4 @@
-package tim.mytrello.controller;
+package tim.mytrello.ajax;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
  * Created by timurbadretdinov on Jun, 2019
  **/
 @Controller
-public class LoginController {
+public class WebController {
 
-    @GetMapping({"/login"})
-    public String openLogin() {
-        return "login";
+    @GetMapping(value="/")
+    public String homepage(){
+        return "index";
     }
 }
