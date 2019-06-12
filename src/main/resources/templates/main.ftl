@@ -17,20 +17,18 @@
 
 
 <div class="container">
-    <br>  <p class="text-center">More bootstrap 4 components on <a href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com</a></p>
+    <br>
+    <p class="text-center">More bootstrap 4 components on <a href="http://bootstrap-ecommerce.com/">
+        Bootstrap-ecommerce.com</a></p>
     <hr>
-
-
-
-
-
     <div class="card bg-light">
         <article class="card-body mx-auto" style="max-width: 400px;">
             <h4 class="card-title mt-3 text-center">Create Account</h4>
             <p class="text-center">Get started with your free account</p>
             <p>
                 <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
-                <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>
+                <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via
+                    facebook</a>
             </p>
             <p class="divider-text">
                 <span class="bg-light">OR</span>
@@ -84,9 +82,9 @@
                     <input class="form-control" placeholder="Repeat password" type="password">
                 </div> <!-- form-group// -->
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
+                    <button type="submit" class="btn btn-primary btn-block"> Create Account</button>
                 </div> <!-- form-group// -->
-                <p class="text-center">Have an account? <a href="">Log In</a> </p>
+                <p class="text-center">Have an account? <a href="">Log In</a></p>
             </form>
         </article>
     </div> <!-- card.// -->

@@ -27,6 +27,9 @@ public class Users {
     private String password;
 
     private String name;
+    private String surname;
+    private String mail;
+    private String phone;
 
     @OneToMany(mappedBy = "owner")
     @JsonIgnoreProperties("owner")

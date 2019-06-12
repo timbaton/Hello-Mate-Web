@@ -11,7 +11,8 @@ import java.util.Collection;
 public class CustomUserDetails extends Users implements org.springframework.security.core.userdetails.UserDetails {
 
     public CustomUserDetails(Users user) {
-        super(user.getId(), user.getLogin(), user.getPassword(), user.getName(), user.getOwnEvents(), user.getOwnEvents());
+        super(user.getId(), user.getLogin(), user.getPassword(), user.getName(), user.getSurname(),
+                user.getMail(), user.getPhone(), user.getOwnEvents(), user.getOwnEvents());
     }
 
     @Override
@@ -34,7 +35,7 @@ public class CustomUserDetails extends Users implements org.springframework.secu
         return true;
     }
 
-    @Override
+    @Overridew
     public boolean isCredentialsNonExpired() {
         return true;
     }
