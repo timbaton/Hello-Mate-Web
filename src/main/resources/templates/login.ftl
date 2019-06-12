@@ -15,47 +15,42 @@
 </head>
 <body>
 
-<#--<!-- Sing in  Form &ndash;&gt;-->
-<#--<div class="container">-->
-   <#---->
 
-    <#--<form method="post" class="register-form" id="login-form">-->
-        <#--<div class="row">-->
-            <#--<div class="col-sm-4">-->
+<div class="container"">
+    <form method="post" id="login-form">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="images/login.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Sign up</h5>
+                <#--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the-->
+                    <#--card's-->
+                    <#--content.</p>-->
+            </div>
+            <ul class="list-group list-group-flush">
 
+                <li class="list-group-item">
+                    <label for="login">Login</label>
+                    <input type="text" class="form-control" name="login" id="login" placeholder="Login"/>
+                </li>
 
-            <#--</div>-->
-    <#--</form>-->
-<#--</div>-->
+                <li class="list-group-item">
+                    <label for="your_pass">Password<i class="zmdi zmdi-lock"></i></label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Password"/>
+                </li>
 
-<form method="post" id="login-form">
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="images/login.jpg" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">Sign up</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
+                <li class="list-group-item">
+                    <input type="submit" name="signin" id="signin" class="btn btn-primary btn-block"
+                           value="Login"/>
+                    <br>
+                    <input type="checkbox" name="remember-me" id="remember-me" class="agree-term"/>
+                    <label for="remember-me" class="label-agree-term">Remember me</label>
+                </li>
+
+            </ul>
+            <div class="card-body">
+                <a href="/registration" class="signup-image-link">Create an account</a>
+            </div>
         </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-                <label for="login"></label>
-                <input type="text" name="login" id="login" placeholder="Login"/>
-            </li>
-            <li class="list-group-item">
-                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                <input type="password" name="password" id="password" placeholder="Password"/>
-            </li>
-            <li class="list-group-item">
-                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
-
-                <input type="checkbox" name="remember-me" id="remember-me" class="agree-term"/>
-                <label for="remember-me" class="label-agree-term">Remember me</label>
-            </li>
-        </ul>
-        <div class="card-body">
-            <a href="/registration" class="signup-image-link">Create an account</a>
-        </div>
-    </div>
-</form>
+    </form>
 </body>
 </html>

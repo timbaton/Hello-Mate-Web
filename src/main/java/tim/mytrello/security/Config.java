@@ -7,10 +7,9 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import tim.mytrello.repository.UserRepository;
-import tim.mytrello.service.CustomUserDetailsService;
+import tim.mytrello.service.UserService;
 
 /**
  * Created by timurbadretdinov on Jun, 2019
@@ -21,7 +20,7 @@ import tim.mytrello.service.CustomUserDetailsService;
 public class Config extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private CustomUserDetailsService userDetailsService;
+    private UserService userDetailsService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

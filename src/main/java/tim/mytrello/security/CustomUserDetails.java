@@ -35,7 +35,7 @@ public class CustomUserDetails extends Users implements org.springframework.secu
         return true;
     }
 
-    @Overridew
+    @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
