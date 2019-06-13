@@ -28,3 +28,33 @@
     background-color: #42AEEC;
     color: #fff;
 }
+
+body, html {
+    margin: 0;
+    overflow: hidden;
+    height:100%;
+}
+
+#left {
+    background-color: #2ecc71;
+    text-align: center;
+    height:100%;
+    position: absolute;
+    top: 0px;
+    bottom: 0;
+    left: 0;
+    width: 75%;
+    overflow-y: scroll;
+}
+
+#right {
+    height:100%;
+    background-color: #f1c40f;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    overflow-y: scroll;
+    width: 25%;
+}
