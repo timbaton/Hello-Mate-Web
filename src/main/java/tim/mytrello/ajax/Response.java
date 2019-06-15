@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 /**
  * Created by timurbadretdinov on Jun, 2019
  **/
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
