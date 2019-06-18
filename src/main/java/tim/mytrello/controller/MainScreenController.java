@@ -27,10 +27,4 @@ public class MainScreenController {
         model.addAttribute("events", events);
         return "main";
     }
-
-    @GetMapping(value = "/main/all")
-    public ResponseEntity<Object> getResource() {
-        List<Event> events = eventService.getAllEvents();
-        return ResponseEntity.ok(events);
-    }
 }

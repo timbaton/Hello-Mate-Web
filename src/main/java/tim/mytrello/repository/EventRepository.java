@@ -7,4 +7,7 @@ import tim.mytrello.entity.Event;
  * Created by timurbadretdinov on Jun, 2019
  **/
 public interface EventRepository extends JpaRepository<Event, Integer> {
+
+    Event findEventById(Long eventId);
+
 }
