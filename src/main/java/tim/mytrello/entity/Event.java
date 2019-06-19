@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -29,6 +30,12 @@ public class Event {
 
     private String description;
     private String location;
+
+    private Timestamp date;
+
+
+    @OneToMany(mappedBy = "event")
+    private List<Image> images;
 
     @ManyToOne
     @JoinColumn(name = "owner_id")
