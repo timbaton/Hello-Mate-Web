@@ -7,109 +7,88 @@
     <title>Sign Up</title>
 
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 
 <#--style-->
     <link rel="stylesheet" href="/css/event_new.css">
     <link rel="stylesheet" href="/css/style.css">
-
-<#--js-->
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
-    <script src="/js/event_new.js"></script>
-
 </head>
 <body>
 
-<div class="container" align="center" style="margin-bottom: 24px">
+<form method="post" enctype="multipart/form-data">
 
-    <br>
-    <br>
-    <div class="card bg-light">
-        <form method="post">
+    <div class="container">
 
-        <#--forms-->
-            <article class="card-body mx-auto" style="max-width: 380px;">
-                <h4 class="card-title mt-3 text-center">Create event</h4>
-                <#--<p class="text-center">Get started with your free account</p>-->
+        <br>
+        <br>
+        <div class="card bg-light">
+            <article class="card-body mx-auto" style="max-width: 400px;">
+            <#--forms-->
+                <div class="container">
 
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                    </div>
-                    <input id="login" name="login" class="form-control" placeholder="Login" type="text" required>
-                </div> <!-- form-group// -->
+                    <h4 class="card-title mt-3 text-center">Create new event</h4>
+                    <p class="text-center">Try your best to interest other people!</p>
 
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                    </div>
-                    <input id="name" name="name" class="form-control" placeholder="Name" type="text" required>
-                </div> <!-- form-group// -->
 
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                    </div>
-                    <input name="surname" class="form-control" placeholder="Surname" type="text" required>
-                </div> <!-- form-group// -->
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-angellist" aria-hidden="true"></i> </span>
+                        </div>
+                        <input id="title" name="title" class="form-control" placeholder="Title" type="text" required>
+                    </div> <!-- form-group// -->
 
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-                    </div>
-                    <input name="mail" class="form-control" placeholder="Email address" type="email" required>
-                </div> <!-- form-group// -->
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-comment-o"></i> </span>
+                        </div>
+                        <input id="description" name="description" class="form-control" placeholder="Description"
+                               type="text" required>
+                    </div> <!-- form-group// -->
+
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-map-marker" aria-hidden="true"></i> </span>
+                        </div>
+                        <input id="location" name="location" class="form-control" placeholder="location" type="text"
+                               required>
+                    </div> <!-- form-group// -->
+
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">  <i class="fa fa-calendar"> </i> </span>
+                        </div>
+                        <input name="date" class="form-control" placeholder="Date" type="date" required>
+                    </div> <!-- form-group// -->
+
+                </div>
+
+
+            <#--images-->
+                <div class="container" style="margin-top: 20px;">
+
+                    <label for="images">Attach your images</label>
+                    <input name="images" type="file" class="form-control-file"
+                           id="images" multiple>
+                </div>
+
+                <br>
+
+                <button type="submit" class="btn btn-primary btn-block"> Create Event</button>
 
                 <br>
 
                 <br>
-                <button type="submit" class="btn btn-primary btn-block"> Create Account</button>
 
-                <p class="text-center">Have an account? <a href="/login">Log In</a></p>
             </article>
-
-            <br>
-            <div class="container">
-
-                <div class="row col-sm-9" id="row">
-                    <div class="col-sm-4 imgUp">
-                        <div class="imagePreview"></div>
-                        <label class="btn btn-primary">
-                            Upload<input type="file" class="uploadFile img" value="Upload Photo"
-                                         style="width: 0px;height: 0px;overflow: hidden;">
-                        </label>
-                    </div><!-- col-2 -->
-
-                    <div class="col-sm-4 imgUp">
-                        <div class="imagePreview"></div>
-                        <label class="btn btn-primary">
-                            Upload<input type="file" class="uploadFile img" value="Upload Photo"
-                                         style="width: 0px;height: 0px;overflow: hidden;">
-                        </label>
-                    </div><!-- col-2 -->
+        </div> <!-- card.// -->
+    </div>
+</form>
 
 
-                    <div class="col-sm-4 imgUp">
-                        <div class="imagePreview"></div>
-                        <label class="btn btn-primary">
-                            Upload<input type="file" class="uploadFile img" value="Upload Photo"
-                                         style="width: 0px;height: 0px;overflow: hidden;">
-                        </label>
-                    </div><!-- col-2 -->
-                </div><!-- row -->
-            </div><!-- container -->
-
-
-        </form>
-    </div> <!-- card.// -->
-
-</div>
-<!--container end.//-->
-
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="/js/event_new.js"></script>
+</body>
 </html>

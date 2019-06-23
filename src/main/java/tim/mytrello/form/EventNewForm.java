@@ -5,21 +5,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 /**
  * Created by timurbadretdinov on Jun, 2019
  **/
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegistrationForm {
+public class EventNewForm {
 
-    private String login;
-    private String password;
-    private String repeatPassword;
+    private String title;
+    private String description;
+    private String location;
+    private String date;
 
-
-    private String name;
-    private String surname;
-    private String mail;
-    private String phone;
+    private MultipartFile[] images;
 }
