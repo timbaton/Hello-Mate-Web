@@ -1,4 +1,4 @@
-package tim.mytrello.payload;
+package tim.mytrello.util.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

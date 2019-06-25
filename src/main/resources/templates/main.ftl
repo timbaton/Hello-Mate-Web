@@ -33,5 +33,6 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="/js/main.js"></script>
+<script src="/js/project.js"></script>
 </body>
 </html>

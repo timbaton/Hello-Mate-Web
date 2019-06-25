@@ -1,4 +1,4 @@
-package tim.mytrello.exception;
+package tim.mytrello.util.exception;
 
 public class FileStorageException extends RuntimeException {
 

@@ -22,6 +22,7 @@ public class MainScreenController {
     @GetMapping(value = "/main")
     public String openMain(ModelMap model) {
         List<Event> events = eventService.getAllEvents();
+
         model.addAttribute("events", events);
         return "main";
     }

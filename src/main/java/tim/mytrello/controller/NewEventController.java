@@ -1,12 +1,15 @@
 package tim.mytrello.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import tim.mytrello.form.EventNewForm;
+import tim.mytrello.security.CustomUserDetails;
+import tim.mytrello.service.EventService;
 import tim.mytrello.service.FileStorageService;
 
 import java.util.Arrays;
@@ -20,7 +23,7 @@ import java.util.stream.Collectors;
 public class NewEventController {
 
     @Autowired
-    private FileStorageService fileStorageService;
+    private EventService eventService;
 
     @GetMapping({"/event_new"})
     public String openLogin() {
@@ -28,11 +31,11 @@ public class NewEventController {
     }
 
     @PostMapping("/event_new")
-    public String uploadMultipleFiles(EventNewForm eventNewForm) {
-        for (MultipartFile file : eventNewForm.getImages()) {
-            fileStorageService.storeFile(file);
-        }
+    public String uploadMultipleFiles(EventNewForm eventNewForm, Authentication authentication) {
+        CustomUserDetails customUser = (CustomUserDetails)authentication.getPrincipal();
+        long userId = customUser.getId();
 
+        eventService.addEvent(eventNewForm, userId);
         return "event_new";
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import tim.mytrello.entity.Event;
+import tim.mytrello.form.EventNewForm;
 import tim.mytrello.form.RegistrationForm;
 import tim.mytrello.repository.EventRepository;
 import tim.mytrello.repository.UserRepository;
@@ -31,5 +32,12 @@ public class EventService {
 
     public Event getEventById(Long eventId) {
         return eventRepository.findEventById(eventId);
+    }
+
+    public void addEvent(EventNewForm eventNewForm, long userId) {
+        Event event = Event.builder()
+                .build();
+//                .date(eventNewForm.getDate().)
+//        eventRepository.
     }
 }

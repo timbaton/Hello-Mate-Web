@@ -92,5 +92,6 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="/js/event_new.js"></script>
+<script src="/js/project.js"></script>
 </body>
 </html>

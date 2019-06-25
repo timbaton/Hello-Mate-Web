@@ -47,13 +47,16 @@ public class Config extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers("/main/**").authenticated()
-                .anyRequest().permitAll()
+                    .antMatchers("/main/**").authenticated()
+                    .antMatchers("/event_new/**").authenticated()
+                    .anyRequest().permitAll()
                 .and()
                     .formLogin()
                     .loginPage("/login")
                     .usernameParameter("login")
-                    .defaultSuccessUrl("/main")
-                .permitAll();
+                    .defaultSuccessUrl("/main").permitAll()
+                .and()
+                    .rememberMe()
+                    .rememberMeParameter("remember-me");
     }
 }

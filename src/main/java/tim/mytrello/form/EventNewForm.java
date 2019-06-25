@@ -19,7 +19,7 @@ public class EventNewForm {
     private String title;
     private String description;
     private String location;
-    private String date;
+    private Date date;
 
     private MultipartFile[] images;
 }
