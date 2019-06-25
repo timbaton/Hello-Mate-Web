@@ -60,7 +60,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">  <i class="fa fa-calendar"> </i> </span>
                         </div>
-                        <input name="date" class="form-control" placeholder="Date" type="date" required>
+                        <input name="date" class="form-control" placeholder="Date" type="datetime-local" required>
                     </div> <!-- form-group// -->
 
                 </div>
@@ -71,7 +71,7 @@
 
                     <label for="images">Attach your images</label>
                     <input name="images" type="file" class="form-control-file"
-                           id="images" multiple>
+                           id="images" multiple required>
                 </div>
 
                 <br>

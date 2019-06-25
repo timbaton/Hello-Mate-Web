@@ -39,7 +39,7 @@
                 <a class="nav-link" href="/event_new">Add event</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
+        <form class="form-inline my-2 my-lg-0" style="margin-right: 40px">
             <a class="nav-ling" href="/logout">Exit</a>
         </form>
     </div>

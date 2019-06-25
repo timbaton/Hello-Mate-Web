@@ -14,6 +14,7 @@ import tim.mytrello.security.CustomUserDetails;
 import tim.mytrello.service.EventService;
 import tim.mytrello.service.FileStorageService;
 
+import java.text.ParseException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -38,7 +39,7 @@ public class NewEventController {
     }
 
     @PostMapping("/event_new")
-    public String uploadMultipleFiles(EventNewForm eventNewForm, Authentication authentication) {
+    public String uploadMultipleFiles(EventNewForm eventNewForm, Authentication authentication) throws ParseException {
         CustomUserDetails customUser = (CustomUserDetails) authentication.getPrincipal();
         Integer userId = customUser.getId();
 
@@ -48,6 +49,6 @@ public class NewEventController {
             eventService.addEvent(eventNewForm, owner);
         } else throw new IllegalArgumentException("User not found");
 
-        return "event_new";
+        return "main";
     }
 }

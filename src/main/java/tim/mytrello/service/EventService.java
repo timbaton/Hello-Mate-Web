@@ -17,6 +17,8 @@ import tim.mytrello.repository.UserRepository;
 import tim.mytrello.security.CustomUserDetails;
 
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -60,7 +62,20 @@ public class EventService {
             images.add(image);
         }
 
-        Event event = new Event(eventNewForm.getTitle(), eventNewForm.getDescription(), eventNewForm.getLocation(), curTime, images, owner);
+        String dateString = eventNewForm.getDate();
+        Date date = null;
+        SimpleDateFormat dateFromString = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+        dateFromString.setLenient(false);
+        try {
+            date =dateFromString.parse(dateString);
+            System.out.println(date);
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        assert date != null;
+        Timestamp dateTimeStamp = new Timestamp(date.getTime());
+        Event event = new Event(eventNewForm.getTitle(), eventNewForm.getDescription(), eventNewForm.getLocation(), dateTimeStamp, images, owner);
 
         eventRepository.save(event);
     }

@@ -24,6 +24,7 @@ public class MainScreenController {
         List<Event> events = eventService.getAllEvents();
 
         model.addAttribute("events", events);
+        model.addAttribute("firstEvent", events.get(3));
         return "main";
     }
 }

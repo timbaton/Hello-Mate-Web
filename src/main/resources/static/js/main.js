@@ -1,16 +1,37 @@
+function fillImages(result) {
+    var images = result.images;
+    $('#listImages').empty();
+
+    if (images.length > 0) {
+        $('#boxshadow').show(410, "linear");
+        images.forEach(function (value, key) {
+            var image = "<li><img id=\"img\" src=\"uploads/" + value.path + "\"></li>";
+            $('#listImages').append(image);
+        });
+    } else {
+        $('#boxshadow').hide();
+    }
+}
+
+var fillDetailedEvent = function (result) {
+
+    fillImages(result);
+
+    document.getElementById("title").innerHTML = result.title;
+
+    document.getElementById("description").innerHTML = result.description;
+
+};
+
 function getEventDetails(event) {
-    var id = event.target.id;
+    var id = event.currentTarget.id;
 
     $.ajax({
         type: "GET",
         url: "/ajax/post/" + id,
         success: function (result) {
-            $('#right ul').empty();
-            var custList = "";
-            var description = result.description;
-            var customer = " <li class=\"list-group-item\">" + "Owner is  = " + result.owner.name + ", event = " + description + ", time remind: " + showLeftTime(result.date) + "<br>";
-            // var customer = "- Customer with Id = " + "<br>";
-            $('#right .list-group').append(customer);
+            fillDetailedEvent(result);
+
             console.log("Success: ", result);
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {

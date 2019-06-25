@@ -6,16 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sign Up</title>
 
-
+    <#--style-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
-    <!-- Main css -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/registration.css">
 </head>
 <body>
+<#include "navbar.ftl" />
 
 <div class="container">
 
@@ -87,12 +86,17 @@
                            required>
                 </div> <!-- form-group// -->
 
+                <br>
+
                 <button type="submit" class="btn btn-primary btn-block"> Create Account</button>
 
                 <p class="text-center">Have an account? <a href="/login">Log In</a></p>
             </form>
         </article>
     </div> <!-- card.// -->
+
+    <br>
+    <br>
 
 </div>
 <!--container end.//-->

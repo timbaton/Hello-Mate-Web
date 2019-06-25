@@ -7,8 +7,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlTransient;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -32,10 +34,11 @@ public class Event {
     private String description;
     private String location;
 
+    @NotNull
     private Timestamp date;
 
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonManagedReference
     private List<Image> images;
 
     @ManyToOne
@@ -65,6 +68,30 @@ public class Event {
         this.date = date;
         this.images = images;
         this.owner = owner;
+    }
+
+    public String showTimeBefore() {
+        Long curDate = new Timestamp(new Date().getTime()).getTime();
+
+        String result = "";
+
+        Long res = Math.abs(date.getTime() - curDate) / 1000;
+
+// get total days between two dates
+        double days = Math.floor(res / 86400);
+        if (days != 0) {
+            result += days + " days ";
+        }
+
+// get hours
+        double hours = Math.floor(res / 3600) % 24;
+        if (hours != 0) {
+            result += hours + " hours ";
+        }
+
+        double minutes = Math.floor(res / 60) % 60;
+        result += minutes + " min";
+        return result;
     }
 
     @Override
