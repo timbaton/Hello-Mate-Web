@@ -7,7 +7,8 @@ function getEventDetails(event) {
         success: function (result) {
             $('#right ul').empty();
             var custList = "";
-            var customer = " <li class=\"list-group-item\">" + "- Customer with Id = " + result.id + ", event = " + result.name + ", time remind: " + showLeftTime(result.date) + "<br>";
+            var description = result.description;
+            var customer = " <li class=\"list-group-item\">" + "Owner is  = " + result.owner.name + ", event = " + description + ", time remind: " + showLeftTime(result.date) + "<br>";
             // var customer = "- Customer with Id = " + "<br>";
             $('#right .list-group').append(customer);
             console.log("Success: ", result);
@@ -32,7 +33,9 @@ function showLeftTime(time) {
 
 // get hours
     var hours = Math.floor(res / 3600) % 24;
-    return days + " days " + hours + " hours";
+
+    var minutes = Math.floor(res / 60) % 60;
+    return days + " days " + hours + " hours " + minutes + " min";
 }
 
 

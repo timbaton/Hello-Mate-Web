@@ -1,6 +1,7 @@
 package tim.mytrello.entity;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,6 +30,16 @@ public class Image {
     private Timestamp date;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "event_id")
     private Event event;
+
+    @Override
+    public String toString() {
+        return "Image{" +
+                "id=" + id +
+                ", path='" + path + '\'' +
+                ", date=" + date +
+                '}';
+    }
 }

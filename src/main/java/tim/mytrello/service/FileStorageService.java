@@ -12,6 +12,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.LinkedList;
+import java.util.List;
 
 @Service
 public class FileStorageService {
@@ -29,7 +31,16 @@ public class FileStorageService {
         }
     }
 
-    public String storeFile(MultipartFile file) {
+    public List<String> storeFiles(MultipartFile[] files) {
+        List<String> names = new LinkedList<>();
+        for (MultipartFile file : files) {
+            names.add(storeFile(file));
+        }
+
+        return names;
+    }
+
+    private String storeFile(MultipartFile file) {
         // Normalize file name
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 
