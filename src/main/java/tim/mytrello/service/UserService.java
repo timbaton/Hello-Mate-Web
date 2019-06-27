@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import tim.mytrello.entity.Event;
 import tim.mytrello.entity.Users;
 import tim.mytrello.form.RegistrationForm;
 import tim.mytrello.repository.UserRepository;
@@ -39,5 +40,14 @@ public class UserService implements UserDetailsService {
                 .phone(registrationUser.getPhone())
                 .build();
         userRepository.save(user);
+    }
+
+    public void addEvent(Integer userId, Event event) {
+        Optional<Users> userOptional = userRepository.findById(userId);
+        if (userOptional.isPresent()) {
+            Users user = userOptional.get();
+            user.addEvent(event);
+            userRepository.save(user);
+        }
     }
 }

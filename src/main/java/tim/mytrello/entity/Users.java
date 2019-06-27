@@ -66,4 +66,8 @@ public class Users {
                 ", phone='" + phone + '\'' +
                 '}';
     }
+
+    public void addEvent(Event event) {
+        events.add(event);
+    }
 }

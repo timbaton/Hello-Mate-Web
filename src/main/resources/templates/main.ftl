@@ -48,6 +48,8 @@
                 </div>
 
                 <p style="margin-top: 24px" id="description" class="font-weight-light">${firstEvent.description}</p>
+
+                <button id="buttonRegister" data-event="${firstEvent.id}" onclick="onRegisterClicked(event)" type="button" class="btn btn-success">Register</button>
             </div>
         </div>
     </div>

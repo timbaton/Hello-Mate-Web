@@ -39,7 +39,7 @@ public class NewEventController {
     }
 
     @PostMapping("/event_new")
-    public String uploadMultipleFiles(EventNewForm eventNewForm, Authentication authentication) throws ParseException {
+    public String uploadMultipleFiles(EventNewForm eventNewForm, Authentication authentication) {
         CustomUserDetails customUser = (CustomUserDetails) authentication.getPrincipal();
         Integer userId = customUser.getId();
 
@@ -49,6 +49,6 @@ public class NewEventController {
             eventService.addEvent(eventNewForm, owner);
         } else throw new IllegalArgumentException("User not found");
 
-        return "main";
+        return "event_new";
     }
 }

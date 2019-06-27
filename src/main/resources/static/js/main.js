@@ -21,6 +21,8 @@ var fillDetailedEvent = function (result) {
 
     document.getElementById("description").innerHTML = result.description;
 
+    document.getElementById("buttonRegister").dataset.event = result.id;
+
 };
 
 function getEventDetails(event) {
@@ -29,6 +31,23 @@ function getEventDetails(event) {
     $.ajax({
         type: "GET",
         url: "/ajax/post/" + id,
+        success: function (result) {
+            fillDetailedEvent(result);
+
+            console.log("Success: ", result);
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert('status:' + XMLHttpRequest.status + ', status text: ' + XMLHttpRequest.statusText);
+        }
+    })
+}
+
+function onRegisterClicked(event) {
+    var id = event.currentTarget.dataset.event;
+
+    $.ajax({
+        type: "POST",
+        url: "/ajax/event_register/" + id,
         success: function (result) {
             fillDetailedEvent(result);
 
