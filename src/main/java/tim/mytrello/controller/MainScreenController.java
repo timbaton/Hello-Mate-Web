@@ -27,6 +27,7 @@ public class MainScreenController {
 
         model.addAttribute("events", events);
         model.addAttribute("firstEvent", events.get(3));
+        model.addAttribute("$hasRegistered", false);
         return "main";
     }
 }

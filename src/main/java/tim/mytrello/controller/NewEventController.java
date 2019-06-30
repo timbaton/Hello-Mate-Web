@@ -32,13 +32,13 @@ public class NewEventController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping({"/event_new"})
+    @GetMapping({"/new"})
 
     public String openLogin() {
         return "event_new";
     }
 
-    @PostMapping("/event_new")
+    @PostMapping("/new")
     public String uploadMultipleFiles(EventNewForm eventNewForm, Authentication authentication) {
         CustomUserDetails customUser = (CustomUserDetails) authentication.getPrincipal();
         Integer userId = customUser.getId();

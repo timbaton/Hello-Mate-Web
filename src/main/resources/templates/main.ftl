@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<#include "navbar.ftl" />
+    <#include "navbar.ftl" />
 
 <div class="container">
     <div class="row">
@@ -20,7 +20,8 @@
         <div class="col-sm-8" id="left">
             <#list events as event>
                 <li>
-                    <a style="height: 150px" id="${event.id}" data-id="${event.id}" href="#" class="list-group-item list-group-item-action"
+                    <a style="height: 150px" id="${event.id}" data-id="${event.id}" href="#"
+                       class="list-group-item list-group-item-action"
                        onclick="getEventDetails(event)">
                         <h3 style="color: #000000">${event.title}</h3>
                         <h6 style="text-align: left; vertical-align: bottom">${event.showTimeBefore()}</h6>
@@ -49,7 +50,11 @@
 
                 <p style="margin-top: 24px" id="description" class="font-weight-light">${firstEvent.description}</p>
 
-                <button id="buttonRegister" data-event="${firstEvent.id}" onclick="onRegisterClicked(event)" type="button" class="btn btn-success">Register</button>
+                <#if !hasRegistered??>
+                      <button id="buttonRegister" data-event="${firstEvent.id}" onclick="onRegisterClicked(event)"
+                              type="button" class="btn btn-success">Register
+                      </button>
+                </#if>
             </div>
         </div>
     </div>

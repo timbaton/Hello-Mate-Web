@@ -17,7 +17,7 @@ import tim.mytrello.service.UserService;
 @Configuration
 @EnableWebSecurity
 @EnableJpaRepositories(basePackageClasses = UserRepository.class)
-public class Config extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserService userDetailsService;
@@ -48,7 +48,7 @@ public class Config extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.authorizeRequests()
                     .antMatchers("/main/**").authenticated()
-                    .antMatchers("/event_new/**").authenticated()
+                    .antMatchers("/event/**").authenticated()
                     .anyRequest().permitAll()
                 .and()
                     .formLogin()

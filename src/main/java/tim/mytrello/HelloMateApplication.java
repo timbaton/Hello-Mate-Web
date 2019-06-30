@@ -9,10 +9,10 @@ import tim.mytrello.util.properties.FileStorageProperties;
 @EnableConfigurationProperties({
         FileStorageProperties.class
 })
-public class MytrelloApplication {
+public class HelloMateApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MytrelloApplication.class, args);
+        SpringApplication.run(HelloMateApplication.class, args);
     }
 
 }
