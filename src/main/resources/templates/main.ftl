@@ -15,12 +15,17 @@
     <#include "navbar.ftl" />
 
 <div class="container">
+
+    <br>
+    <br>
+<#--<div class="card bg-light">-->
+<#--<article class="card-body mx-auto" style="max-width: 400px;">-->
     <div class="row">
 
-        <div class="col-sm-8" id="left">
+        <div class="column left" id="left">
             <#list events as event>
                 <li>
-                    <a style="height: 150px" id="${event.id}" data-id="${event.id}" href="#"
+                    <a style="height: 150px; width: 100%;" id="${event.id}" data-id="${event.id}" href="#"
                        class="list-group-item list-group-item-action"
                        onclick="getEventDetails(event)">
                         <h3 style="color: #000000">${event.title}</h3>
@@ -32,7 +37,7 @@
             </#list>
         </div>
 
-        <div class="col" id="right">
+        <div class="column right" id="right">
             <div class="container">
                 <h1 id="title">${firstEvent.title}</h1>
                 <br>
@@ -58,13 +63,17 @@
             </div>
         </div>
     </div>
+<#--</article>-->
+<#--</div>-->
+</div>
+
 
 <#--js-->
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="/js/main.js"></script>
-    <script src="/js/project.js"></script>
+<#--<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>-->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/project.js"></script>
 </div>
 </body>
 </html>

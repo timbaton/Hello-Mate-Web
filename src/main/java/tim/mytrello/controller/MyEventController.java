@@ -24,25 +24,27 @@ import java.util.Optional;
 public class MyEventController {
 
     @Autowired
-    private EventService eventService;
-
-    @Autowired
     private UserRepository userRepository;
 
 
-    @GetMapping(value = "/my")
+    @GetMapping(value = "event/my")
     public String openMyEvents(ModelMap model, Authentication authentication) {
         int userId = ((CustomUserDetails) authentication.getPrincipal()).getId();
         Optional<Users> usersOptional = userRepository.findById(userId);
-        List<Event> events = new LinkedList<>();
+        List<Event> events;
+
         if (usersOptional.isPresent()) {
             Users user = usersOptional.get();
             events = user.getEvents();
-        }
 
-        model.addAttribute("events", events);
-        model.addAttribute("firstEvent", events.get(0));
-        model.addAttribute("hasRegistered", true);
-        return "main";
+            if (!events.isEmpty()) {
+                model.addAttribute("events", events);
+                model.addAttribute("firstEvent", events.get(0));
+                model.addAttribute("hasRegistered", true);
+                return "main";
+            } else return "redirect:/main";
+        } else {
+            return "redirect:/login";
+        }
     }
 }

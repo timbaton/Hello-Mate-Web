@@ -5,7 +5,7 @@ function fillImages(result) {
     if (images.length > 0) {
         $('#boxshadow').show(410, "linear");
         images.forEach(function (value, key) {
-            var image = "<li><img id=\"img\" src=\"uploads/" + value.path + "\"></li>";
+            var image = "<li><img id=\"img\" src=\"http://localhost:8080/uploads/" + value.path + "\"></li>";
             $('#listImages').append(image);
         });
     } else {
