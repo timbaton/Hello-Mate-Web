@@ -1,9 +1,8 @@
 .column {
     float: left;
     padding: 10px;
-    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
     overflow-y: scroll;
-    height: 85vh; /* Should be removed. Only for demonstration */
+    height: 85vh;
 }
 
 .left {
@@ -14,20 +13,26 @@
     width: 75%;
 }
 
+#tableContainer {
+    box-shadow: 26px 22px 23px -23px rgba(0, 0, 0, 0.28);
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 5px;
+}
+
 #boxshadow {
     box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
     padding: 10px;
     background: white;
 }
 
-ul{
-    list-style-type:none;
-    white-space:nowrap;
-    overflow-x:auto;
+ul {
+    list-style-type: none;
+    white-space: nowrap;
+    overflow-x: auto;
 }
 
-li{
-    display:inline;
+li {
+    display: inline;
 }
 
 #img {

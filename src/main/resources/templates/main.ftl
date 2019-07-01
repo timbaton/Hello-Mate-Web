@@ -18,15 +18,12 @@
 <div class="container">
 
     <br>
-    <br>
-<#--<div class="card bg-light">-->
-<#--<article class="card-body mx-auto" style="max-width: 400px;">-->
-    <div class="row">
+    <div class="row" id="tableContainer">
 
         <div class="column left" id="left">
             <#list events as event>
                 <li>
-                    <a style="height: 150px; width: 100%;" id="${event.id}" data-id="${event.id}" href="#"
+                    <a style="height: 150px; width: 100%;" id="${event.id}" data-id="${event.id}"
                        class="list-group-item list-group-item-action"
                        onclick="getEventDetails(event)">
                         <h3 style="color: #000000">${event.title}</h3>
@@ -34,7 +31,6 @@
                     </a>
 
                 </li>
-
             </#list>
         </div>
 
@@ -46,11 +42,11 @@
             <#--Images-->
                 <div class="container" id="boxshadow" style="width: 800px">
                     <ul id="listImages">
-                    <#list firstEvent.images as image>
-                        <li>
-                            <img id="img" src="uploads/${image.path}">
-                        </li>
-                    </#list>
+                        <#list firstEvent.images as image>
+                            <li>
+                                <img id="img" src="uploads/${image.path}">
+                            </li>
+                        </#list>
                     </ul>
                 </div>
 
@@ -64,15 +60,12 @@
             </div>
         </div>
     </div>
-<#--</article>-->
-<#--</div>-->
 </div>
 
 
 <#--js-->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+<script src="/js/jQuery.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
