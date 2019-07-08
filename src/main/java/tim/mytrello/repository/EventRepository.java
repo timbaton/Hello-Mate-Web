@@ -1,6 +1,9 @@
 package tim.mytrello.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 import tim.mytrello.entity.Event;
 
 /**
@@ -9,7 +12,4 @@ import tim.mytrello.entity.Event;
 public interface EventRepository extends JpaRepository<Event, Integer> {
 
     Event findEventById(Long eventId);
-
-    Long deleteById(Long eventId);
-
 }

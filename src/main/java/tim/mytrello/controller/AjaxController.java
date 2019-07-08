@@ -102,8 +102,8 @@ public class AjaxController {
     @PostMapping(value = "/ajax/event_delete/{event_id}")
     public ResponseEntity<Object> deleteEvent(@PathVariable(name = "event_id") Long event_id, Authentication authentication) {
 
-        Event event = eventService.deleteEvent(event_id);
+        eventService.deleteEvent(event_id);
 
-        return ResponseEntity.ok(event);
+        return ResponseEntity.ok().build();
     }
 }

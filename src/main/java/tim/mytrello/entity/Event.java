@@ -40,7 +40,6 @@ public class Event {
     private Timestamp date;
 
     @OneToMany(mappedBy = "event", cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonManagedReference
     private List<Image> images;
 

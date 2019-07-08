@@ -82,8 +82,8 @@ public class EventService {
     }
 
     @Transactional
-    public Event deleteEvent(Long event_id) {
-        eventRepository.deleteById(event_id);
-        return eventRepository.findAll().get(0);
+    public void deleteEvent(Long event_id) {
+        Event event = eventRepository.findEventById(event_id);
+        eventRepository.delete(event);
     }
 }

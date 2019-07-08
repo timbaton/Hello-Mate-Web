@@ -38,7 +38,7 @@ public class NewEventController {
     }
 
     @PostMapping("event/new")
-    public String uploadMultipleFiles(EventNewForm eventNewForm, Authentication authentication) {
+    public String addNewEvent(EventNewForm eventNewForm, Authentication authentication) {
         CustomUserDetails customUser = (CustomUserDetails) authentication.getPrincipal();
         Integer userId = customUser.getId();
 
