@@ -13,10 +13,15 @@ function fillImages(result) {
     }
 }
 
-function fillDetailedEvent(event, userId) {
+function fillDetailedEvent(result) {
+
+    var event = result.event;
+    var userId = result.userId;
+    var isRegistered = result.isRegistered;
 
     fillImages(event);
 
+    $('#title').show(410, "linear");
     document.getElementById("title").innerHTML = event.title;
 
     document.getElementById("description").innerHTML = event.description;
@@ -26,13 +31,19 @@ function fillDetailedEvent(event, userId) {
     document.getElementById("buttonDelete").dataset.event = event.id;
 
 
-    var owner = event.owner;
-    var id = owner.id;
-    var b = userId === id;
-    if (!b) {
+    // var owner = event.owner;
+    // var id = owner.id;
+    // var b = userId === id;
+    if (event.owner.id !== userId) {
         $('#buttonDelete').hide();
     } else {
         $('#buttonDelete').show(410, "linear");
+    }
+
+    if (isRegistered) {
+        $('#buttonRegister').hide();
+    } else {
+        $('#buttonRegister').show(410, "linear");
     }
 }
 
@@ -43,7 +54,7 @@ function getEventDetails(event) {
         type: "GET",
         url: "/ajax/post/" + id,
         success: function (result) {
-            fillDetailedEvent(result.event, result.userId);
+            fillDetailedEvent(result);
 
             console.log("Success: ", result);
         },
@@ -58,7 +69,7 @@ function onRegisterClicked(event) {
 
     $.ajax({
         type: "POST",
-        url: "/ajax/event_details/" + id,
+        url: "/ajax/event_register/" + id,
         success: function (result) {
             fillDetailedEvent(result);
 

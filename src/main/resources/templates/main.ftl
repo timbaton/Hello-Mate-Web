@@ -36,11 +36,11 @@
 
         <div class="column right" id="right">
             <div class="container">
-                <h1 id="title">${firstEvent.title}</h1>
+                <h1 style="display: none" id="title">${firstEvent.title}</h1>
                 <br>
 
             <#--Images-->
-                <div class="container" id="boxshadow" style="width: 800px">
+                <div style="display: none" class="container" id="boxshadow" style="width: 800px">
                     <ul id="listImages">
                         <#list firstEvent.images as image>
                             <li>
@@ -50,19 +50,15 @@
                     </ul>
                 </div>
 
-                <p style="margin-top: 24px" id="description" class="font-weight-light">${firstEvent.description}</p>
+                <p style="margin-top: 24px" id="description" class="font-weight-light">выберете мероприятия из списка</p>
 
-                <#if !hasRegistered??>
-                      <button id="buttonRegister" data-event="${firstEvent.id}" onclick="onRegisterClicked(event)"
-                              type="button" class="btn btn-success">Register
-                      </button>
-                </#if>
+                <button style="display: none" id="buttonRegister" data-event="${firstEvent.id}" onclick="onRegisterClicked(event)"
+                        type="button" class="btn btn-success">Register
+                </button>
 
-                <#if user_id == firstEvent.owner.id>
-                      <button id="buttonDelete" data-event="${firstEvent.id}" onclick="onDeleteEventClicked(event)"
-                              type="button" class="btn btn-danger">Delete
-                      </button>
-                </#if>
+                <button style="display: none" id="buttonDelete" data-event="${firstEvent.id}" onclick="onDeleteEventClicked(event)"
+                        type="button" class="btn btn-danger">Delete
+                </button>
             </div>
         </div>
     </div>

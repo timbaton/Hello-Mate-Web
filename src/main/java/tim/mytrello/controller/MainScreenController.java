@@ -32,7 +32,6 @@ public class MainScreenController {
             model.addAttribute("events", events);
             model.addAttribute("user_id", userId);
             model.addAttribute("firstEvent", events.get(0));
-            model.addAttribute("hasRegistered", true);
             return "main";
         } else return "redirect:/event/new";
     }
