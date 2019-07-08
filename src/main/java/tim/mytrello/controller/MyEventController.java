@@ -32,10 +32,13 @@ public class MyEventController {
         int userId = ((CustomUserDetails) authentication.getPrincipal()).getId();
         Optional<Users> usersOptional = userRepository.findById(userId);
         List<Event> events;
+        List<Event> ownEvents;
 
         if (usersOptional.isPresent()) {
             Users user = usersOptional.get();
             events = user.getEvents();
+            ownEvents = user.getOwnEvents();
+            events.addAll(ownEvents);
 
             if (!events.isEmpty()) {
                 model.addAttribute("events", events);

@@ -18,6 +18,7 @@ function fillDetailedEvent(result) {
     var event = result.event;
     var userId = result.userId;
     var isRegistered = result.isRegistered;
+    var isAdmin = result.isAdmin;
 
     fillImages(event);
 
@@ -40,7 +41,11 @@ function fillDetailedEvent(result) {
         $('#buttonDelete').show(410, "linear");
     }
 
-    if (isRegistered) {
+    if (isAdmin) {
+        //если админ - регистрация не нужна
+        $('#buttonUnRegister').hide();
+        $('#buttonRegister').hide();
+    } else if (isRegistered) {
         $('#buttonRegister').hide();
         $('#buttonUnRegister').show(410, "linear");
     } else {

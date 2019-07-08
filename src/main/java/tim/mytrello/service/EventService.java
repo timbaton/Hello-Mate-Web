@@ -34,7 +34,7 @@ public class EventService {
     @Autowired
     private EventRepository eventRepository;
     @Autowired
-    private ImageService imageService;
+    private UserRepository userRepository;
 
     @Autowired
     private FileStorageService fileStorageService;
@@ -84,6 +84,24 @@ public class EventService {
     @Transactional
     public void deleteEvent(Long event_id) {
         Event event = eventRepository.findEventById(event_id);
+
         eventRepository.delete(event);
+    }
+
+    public void deleteParticipants(Long event_id) {
+        Event event = eventRepository.findEventById(event_id);
+
+        event.setParticipants(new LinkedList<>());
+        eventRepository.save(event);
+    }
+
+    public void addParticipant(Event event, int userId) {
+        Optional<Users> usersOptional= userRepository.findById(userId);
+        Users user = null;
+        if (usersOptional.isPresent()) {
+            user = usersOptional.get();
+        }
+        event.addUser(user);
+        eventRepository.save(event);
     }
 }

@@ -45,12 +45,8 @@ public class Users {
             property = "id")
     private List<Event> ownEvents;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "participants", fetch = FetchType.LAZY)
     @JsonBackReference
-    @JoinTable(
-            name = "event_user",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "event_id"))
     @JsonIdentityInfo(
             generator = ObjectIdGenerators.PropertyGenerator.class,
             property = "id")

@@ -39,7 +39,7 @@ public class Event {
     @NotNull
     private Timestamp date;
 
-    @OneToMany(mappedBy = "event", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<Image> images;
 
@@ -51,8 +51,12 @@ public class Event {
             property = "id")
     private Users owner;
 
-    @ManyToMany(mappedBy = "events")
+    @ManyToMany(fetch = FetchType.LAZY)
     @JsonBackReference
+    @JoinTable(
+            name = "event_user",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "event_id"))
     @JsonIdentityInfo(
             generator = ObjectIdGenerators.PropertyGenerator.class,
             property = "id")
@@ -106,5 +110,15 @@ public class Event {
                 ", date=" + date +
                 ", images=" + images +
                 '}';
+    }
+
+    public void addUser(Users user) {
+        participants.add(user);
+        user.addEvent(this);
+    }
+
+    public void deleteUser(Users user) {
+        participants.remove(user);
+        user.deleteEvent(this);
     }
 }
