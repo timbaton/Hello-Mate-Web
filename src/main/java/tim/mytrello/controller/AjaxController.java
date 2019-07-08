@@ -85,6 +85,20 @@ public class AjaxController {
         return ResponseEntity.ok(event);
     }
 
+    @PostMapping(value = "/ajax/event_un_register/{event_id}")
+    public ResponseEntity<Object> unRegisterOnEvent(@PathVariable(name = "event_id") Long event_id, Authentication authentication) {
+
+        CustomUserDetails customUser = (CustomUserDetails) authentication.getPrincipal();
+        Integer userId = customUser.getId();
+
+        //достаем
+        Event event = eventService.getEventById(event_id);
+        //добавляем юзеру эвент
+        userService.deleteEvent(userId, event);
+
+        return ResponseEntity.ok(event);
+    }
+
     @PostMapping(value = "/ajax/event_delete/{event_id}")
     public ResponseEntity<Object> deleteEvent(@PathVariable(name = "event_id") Long event_id, Authentication authentication) {
 

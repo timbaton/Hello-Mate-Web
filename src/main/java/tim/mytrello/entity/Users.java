@@ -12,6 +12,8 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.xml.bind.annotation.XmlTransient;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -69,5 +71,16 @@ public class Users {
 
     public void addEvent(Event event) {
         events.add(event);
+    }
+
+    public void deleteEvent(Event event) {
+        List<Event> newEventList = new ArrayList<>();
+
+        for (Event registeredEvent : events) {
+            if (!registeredEvent.getId().equals(event.getId())) {
+                newEventList.add(registeredEvent);
+            }
+        }
+        events = newEventList;
     }
 }

@@ -42,8 +42,10 @@ function fillDetailedEvent(result) {
 
     if (isRegistered) {
         $('#buttonRegister').hide();
+        $('#buttonUnRegister').show(410, "linear");
     } else {
         $('#buttonRegister').show(410, "linear");
+        $('#buttonUnRegister').hide();
     }
 }
 
@@ -70,6 +72,23 @@ function onRegisterClicked(event) {
     $.ajax({
         type: "POST",
         url: "/ajax/event_register/" + id,
+        success: function (result) {
+            fillDetailedEvent(result);
+
+            console.log("Success: ", result);
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert('status:' + XMLHttpRequest.status + ', status text: ' + XMLHttpRequest.statusText);
+        }
+    })
+}
+
+function onUnRegisterClicked(event) {
+    var id = event.currentTarget.dataset.event;
+
+    $.ajax({
+        type: "POST",
+        url: "/ajax/event_un_register/" + id,
         success: function (result) {
             fillDetailedEvent(result);
 

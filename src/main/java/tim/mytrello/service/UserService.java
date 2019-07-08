@@ -50,4 +50,13 @@ public class UserService implements UserDetailsService {
             userRepository.save(user);
         }
     }
+
+    public void deleteEvent(Integer userId, Event event) {
+        Optional<Users> userOptional = userRepository.findById(userId);
+        if (userOptional.isPresent()) {
+            Users user = userOptional.get();
+            user.deleteEvent(event);
+            userRepository.save(user);
+        }
+    }
 }

@@ -56,6 +56,10 @@
                         type="button" class="btn btn-success">Register
                 </button>
 
+                <button style="display: none" id="buttonUnRegister" data-event="${firstEvent.id}" onclick="onUnRegisterClicked(event)"
+                        type="button" class="btn btn-success">Unregister
+                </button>
+
                 <button style="display: none" id="buttonDelete" data-event="${firstEvent.id}" onclick="onDeleteEventClicked(event)"
                         type="button" class="btn btn-danger">Delete
                 </button>
