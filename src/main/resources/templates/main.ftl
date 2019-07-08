@@ -57,6 +57,12 @@
                               type="button" class="btn btn-success">Register
                       </button>
                 </#if>
+
+                <#if user_id == firstEvent.owner.id>
+                      <button id="buttonDelete" data-event="${firstEvent.id}" onclick="onDeleteEventClicked(event)"
+                              type="button" class="btn btn-danger">Delete
+                      </button>
+                </#if>
             </div>
         </div>
     </div>

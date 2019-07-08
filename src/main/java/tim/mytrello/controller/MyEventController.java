@@ -39,6 +39,7 @@ public class MyEventController {
 
             if (!events.isEmpty()) {
                 model.addAttribute("events", events);
+                model.addAttribute("user_id", userId);
                 model.addAttribute("firstEvent", events.get(0));
                 model.addAttribute("hasRegistered", true);
                 return "main";

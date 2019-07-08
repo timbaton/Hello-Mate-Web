@@ -13,17 +13,28 @@ function fillImages(result) {
     }
 }
 
-var fillDetailedEvent = function (result) {
+function fillDetailedEvent(event, userId) {
 
-    fillImages(result);
+    fillImages(event);
 
-    document.getElementById("title").innerHTML = result.title;
+    document.getElementById("title").innerHTML = event.title;
 
-    document.getElementById("description").innerHTML = result.description;
+    document.getElementById("description").innerHTML = event.description;
 
-    document.getElementById("buttonRegister").dataset.event = result.id;
+    document.getElementById("buttonRegister").dataset.event = event.id;
 
-};
+    document.getElementById("buttonDelete").dataset.event = event.id;
+
+
+    var owner = event.owner;
+    var id = owner.id;
+    var b = userId === id;
+    if (!b) {
+        $('#buttonDelete').hide();
+    } else {
+        $('#buttonDelete').show(410, "linear");
+    }
+}
 
 function getEventDetails(event) {
     var id = event.currentTarget.id;
@@ -32,7 +43,7 @@ function getEventDetails(event) {
         type: "GET",
         url: "/ajax/post/" + id,
         success: function (result) {
-            fillDetailedEvent(result);
+            fillDetailedEvent(result.event, result.userId);
 
             console.log("Success: ", result);
         },
@@ -47,7 +58,24 @@ function onRegisterClicked(event) {
 
     $.ajax({
         type: "POST",
-        url: "/ajax/event_register/" + id,
+        url: "/ajax/event_details/" + id,
+        success: function (result) {
+            fillDetailedEvent(result);
+
+            console.log("Success: ", result);
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert('status:' + XMLHttpRequest.status + ', status text: ' + XMLHttpRequest.statusText);
+        }
+    })
+}
+
+function onDeleteEventClicked(event) {
+    var id = event.currentTarget.dataset.event;
+
+    $.ajax({
+        type: "POST",
+        url: "/ajax/event_delete/" + id,
         success: function (result) {
             fillDetailedEvent(result);
 

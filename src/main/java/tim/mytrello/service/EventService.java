@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import tim.mytrello.entity.Event;
 import tim.mytrello.entity.Image;
 import tim.mytrello.entity.Users;
@@ -78,5 +79,11 @@ public class EventService {
         Event event = new Event(eventNewForm.getTitle(), eventNewForm.getDescription(), eventNewForm.getLocation(), dateTimeStamp, images, owner);
 
         eventRepository.save(event);
+    }
+
+    @Transactional
+    public Event deleteEvent(Long event_id) {
+        eventRepository.deleteById(event_id);
+        return eventRepository.findAll().get(0);
     }
 }

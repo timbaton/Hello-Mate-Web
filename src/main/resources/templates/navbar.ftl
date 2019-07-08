@@ -19,6 +19,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/event/my">My plans</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/profile">Profile</a>
+            </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" style="margin-right: 40px">
             <a class="nav-ling" href="/logout">Exit</a>
