@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import tim.mytrello.repository.UserRepository;
 import tim.mytrello.service.UserService;
@@ -22,22 +23,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserService userDetailsService;
 
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService)
-                .passwordEncoder(getPasswordEncoder());
+                .passwordEncoder(new BCryptPasswordEncoder());
     }
 
     private PasswordEncoder getPasswordEncoder() {
         return new PasswordEncoder() {
             @Override
             public String encode(CharSequence charSequence) {
-                return charSequence.toString();
+                return bCryptPasswordEncoder.encode(charSequence);
             }
 
             @Override
             public boolean matches(CharSequence charSequence, String s) {
-                return true;
+                return bCryptPasswordEncoder.matches(charSequence, s);
             }
         };
     }
