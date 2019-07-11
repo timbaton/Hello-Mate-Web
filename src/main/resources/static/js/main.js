@@ -18,7 +18,7 @@ function fillDetailedEvent(result) {
     var event = result.event;
     var userId = result.userId;
     var isRegistered = result.isRegistered;
-    var isAdmin = result.isAdmin;
+    var isAdmin = event.owner.id === userId
 
     fillImages(event);
 
@@ -31,11 +31,7 @@ function fillDetailedEvent(result) {
 
     document.getElementById("buttonDelete").dataset.event = event.id;
 
-
-    // var owner = event.owner;
-    // var id = owner.id;
-    // var b = userId === id;
-    if (event.owner.id !== userId) {
+    if (!isAdmin) {
         $('#buttonDelete').hide();
     } else {
         $('#buttonDelete').show(410, "linear");

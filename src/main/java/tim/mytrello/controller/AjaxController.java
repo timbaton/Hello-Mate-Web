@@ -6,6 +6,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import tim.mytrello.Dto.EventDto;
 import tim.mytrello.entity.Event;
 import tim.mytrello.entity.Users;
 import tim.mytrello.security.CustomUserDetails;
@@ -40,7 +41,6 @@ public class AjaxController {
         int userId = ((CustomUserDetails) authentication.getPrincipal()).getId();
 
         boolean isRegistered = false;
-        boolean isAdmin = false;
         List<Users> participants = event.getParticipants();
 
         for (Users user : participants) {
@@ -49,16 +49,11 @@ public class AjaxController {
                 isRegistered = true;
             }
         }
-        //если юзер является создателем - ему удалить нельзя
-        if (event.getOwner().getId() == userId) {
-            isAdmin = true;
-        }
 
         HashMap response = new HashMap();
-        response.put("event", event);
+        response.put("event", EventDto.from(event));
         response.put("userId", userId);
         response.put("isRegistered", isRegistered);
-        response.put("isAdmin", isAdmin);
         return ResponseEntity.ok(response);
     }
 

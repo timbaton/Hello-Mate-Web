@@ -31,19 +31,16 @@ public class MyEventController {
     public String openMyEvents(ModelMap model, Authentication authentication) {
         int userId = ((CustomUserDetails) authentication.getPrincipal()).getId();
         Optional<Users> usersOptional = userRepository.findById(userId);
-        List<Event> events;
         List<Event> ownEvents;
 
         if (usersOptional.isPresent()) {
             Users user = usersOptional.get();
-            events = user.getEvents();
             ownEvents = user.getOwnEvents();
-            events.addAll(ownEvents);
 
-            if (!events.isEmpty()) {
-                model.addAttribute("events", events);
+            if (!ownEvents.isEmpty()) {
+                model.addAttribute("events", ownEvents);
                 model.addAttribute("user_id", userId);
-                model.addAttribute("firstEvent", events.get(0));
+                model.addAttribute("firstEvent", ownEvents.get(0));
                 return "main";
             } else return "redirect:/main";
         } else {

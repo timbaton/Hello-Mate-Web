@@ -30,7 +30,7 @@ public class RestLoginService {
 
         if (possibleUser.isPresent()) {
             Users user = possibleUser.get();
-            
+
             boolean passCorrect = new BCryptPasswordEncoder().matches(loginForm.getPassword(), user.getPassword());
             if (passCorrect) {
                 Token token = getToken(user);
