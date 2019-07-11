@@ -37,14 +37,14 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-angellist" aria-hidden="true"></i> </span>
                         </div>
-                        <input id="title" name="title" class="form-control" placeholder="Title" type="text" required>
+                        <input id="name" name="name" class="form-control" placeholder="Name" type="text" required>
                     </div> <!-- form-group// -->
 
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-comment-o"></i> </span>
                         </div>
-                        <input id="description" name="description" class="form-control" placeholder="Description"
+                        <input id="surname" name="surname" class="form-control" placeholder="Surname"
                                type="text" required>
                     </div> <!-- form-group// -->
 
@@ -52,7 +52,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-map-marker" aria-hidden="true"></i> </span>
                         </div>
-                        <input id="location" name="location" class="form-control" placeholder="location" type="text"
+                        <input id="mail" name="mail" class="form-control" placeholder="Mail" type="email"
                                required>
                     </div> <!-- form-group// -->
 
@@ -60,7 +60,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">  <i class="fa fa-calendar"> </i> </span>
                         </div>
-                        <input name="date" class="form-control" placeholder="Date" type="datetime-local" required>
+                        <input name="phone" class="form-control" placeholder="Phone" type="number" required>
                     </div> <!-- form-group// -->
 
                 </div>
@@ -69,9 +69,9 @@
             <#--images-->
                 <div class="container" style="margin-top: 20px;">
 
-                    <label for="images">Attach your images</label>
-                    <input name="images" type="file" class="form-control-file"
-                           id="images" multiple required>
+                    <label for="images">Change your avatar</label>
+                    <input name="avatar" type="file" class="form-control-file"
+                           id="avatar" required>
                 </div>
 
                 <br>

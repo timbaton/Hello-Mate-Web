@@ -21,7 +21,11 @@
 
     <div class="row h-100" style="vertical-align: center">
 
-        <img src="images/avatar.png" class="float-left rounded-circle" alt="avatar">
+        <#if user.avatar?exists>
+                <img src="http://localhost:8080/uploads/${user.avatar.path}" class="float-left rounded-circle" alt="avatar" onload="fixAspect(this)">
+        <#else>
+                <img src="images/avatar.png" class="float-left rounded-circle" alt="avatar">
+        </#if>
 
         <h3 id="user_login"> ${user.login} </h3>
 
@@ -99,7 +103,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-<#--<script src="/js/event_new.js"></script>-->
+<script src="/js/profile.js"></script>
 <#--<script src="/js/project.js"></script>-->
 </body>
 </html>

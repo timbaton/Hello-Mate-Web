@@ -40,7 +40,7 @@ public class FileStorageService {
         return names;
     }
 
-    private String storeFile(MultipartFile file) {
+    public String storeFile(MultipartFile file) {
         // Normalize file name
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 

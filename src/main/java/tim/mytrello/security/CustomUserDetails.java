@@ -12,7 +12,7 @@ public class CustomUserDetails extends Users implements org.springframework.secu
 
     public CustomUserDetails(Users user) {
         super(user.getId(), user.getLogin(), user.getPassword(), user.getName(), user.getSurname(),
-                user.getMail(), user.getPhone(), user.getOwnEvents(), user.getOwnEvents(), user.getTokens());
+                user.getMail(), user.getPhone(), user.getAvatar(), user.getOwnEvents(), user.getOwnEvents(), user.getTokens());
     }
 
     @Override

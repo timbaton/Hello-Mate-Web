@@ -7,11 +7,15 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import tim.mytrello.entity.Event;
+import tim.mytrello.entity.Image;
 import tim.mytrello.entity.Users;
+import tim.mytrello.form.EditProfileForm;
 import tim.mytrello.form.RegistrationForm;
 import tim.mytrello.repository.UserRepository;
 import tim.mytrello.security.CustomUserDetails;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Optional;
 
 /**
@@ -22,6 +26,9 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private FileStorageService fileStorageService;
 
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
@@ -58,6 +65,25 @@ public class UserService implements UserDetailsService {
         if (userOptional.isPresent()) {
             Users user = userOptional.get();
             user.deleteEvent(event);
+            userRepository.save(user);
+        }
+    }
+
+    public void editUser(EditProfileForm editProfileForm, int userId) {
+        String avatar = fileStorageService.storeFile(editProfileForm.getAvatar());
+        Timestamp dateTimeStamp = new Timestamp(new Date().getTime());
+
+        Image image = Image.builder().path(avatar).date(dateTimeStamp).build();
+
+        Optional<Users> userOptional = userRepository.findById(userId);
+        if (userOptional.isPresent()) {
+            Users user = userOptional.get();
+
+            user.setAvatar(image);
+            user.setName(editProfileForm.getName());
+            user.setSurname(editProfileForm.getSurname());
+            user.setMail(editProfileForm.getMail());
+            user.setPhone(editProfileForm.getPhone());
             userRepository.save(user);
         }
     }

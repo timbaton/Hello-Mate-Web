@@ -35,6 +35,9 @@ public class Image {
     @JoinColumn(name = "event_id")
     private Event event;
 
+    @OneToOne(mappedBy = "avatar")
+    private Users user;
+
     @Override
     public String toString() {
         return "Image{" +

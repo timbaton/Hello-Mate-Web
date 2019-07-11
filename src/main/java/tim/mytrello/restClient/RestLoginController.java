@@ -26,7 +26,7 @@ public class RestLoginController {
         return ResponseEntity.ok(loginService.login(loginForm));
     }
 
-    @PostMapping("/rest/register")
+    @PostMapping("/rest/editUser")
     ResponseEntity<LoginResponse> register(@RequestBody LoginForm loginForm) {
         return ResponseEntity.ok(loginService.register(loginForm));
     }
