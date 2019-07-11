@@ -17,7 +17,7 @@
                 <a class="nav-link" href="/event/new">Add event</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/event/my">My plans</a>
+                <a class="nav-link" href="/event/my">My events</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/profile">Profile</a>

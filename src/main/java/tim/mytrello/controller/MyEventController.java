@@ -39,7 +39,6 @@ public class MyEventController {
 
             if (!ownEvents.isEmpty()) {
                 model.addAttribute("events", ownEvents);
-                model.addAttribute("user_id", userId);
                 model.addAttribute("firstEvent", ownEvents.get(0));
                 return "main";
             } else return "redirect:/main";

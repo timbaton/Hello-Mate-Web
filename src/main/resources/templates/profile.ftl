@@ -11,7 +11,6 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/profile.css">
-    <link rel="stylesheet" href="/css/style.css">
 
 </head>
 <body>
@@ -20,83 +19,72 @@
 
 <div class="container">
 
+    <div class="row h-100" style="vertical-align: center">
+
+        <img src="images/avatar.png" class="float-left rounded-circle" alt="avatar">
+
+        <h3 id="user_login"> ${user.login} </h3>
+
+
+        <div class="col-sm-9">
+            <a href="/profile/edit" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span>Edit profile</a>
+
+        </div>
+
+    </div>
     <br>
-    <br>
-    <div class="card bg-light">
-        <article class="card-body mx-auto" style="max-width: 400px;">
-            <h4 class="card-title mt-3 text-center">Create Account</h4>
-            <p class="text-center">Get started with your free account</p>
-            <p>
-                <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
-                <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via
-                    facebook</a>
-            </p>
-            <p class="divider-text">
-                <span class="bg-light">OR</span>
-            </p>
-            <form method="post">
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                    </div>
-                    <input id="login" name="login" class="form-control" placeholder="Login" type="text" required>
-                </div> <!-- form-group// -->
+    <div class="container">
 
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                    </div>
-                    <input id="name" name="name" class="form-control" placeholder="Name" type="text" required>
-                </div> <!-- form-group// -->
+        <br>
+        <div class="row" id="tableContainer">
 
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                    </div>
-                    <input name="surname" class="form-control" placeholder="Surname" type="text" required>
-                </div> <!-- form-group// -->
+            <div class="column left" id="left">
+                <#if events?size != 0>
+                    <#list events as event>
+                        <li>
+                            <a style="height: 150px; width: 100%;" id="${event.id}" data-id="${event.id}"
+                               class="list-group-item list-group-item-action"
+                               onclick="getEventDetails(event)">
+                                <h3 style="color: #000000">${event.title}</h3>
+                                <h6 style="text-align: left; vertical-align: bottom">${event.showTimeBefore()}</h6>
+                            </a>
 
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-                    </div>
-                    <input name="mail" class="form-control" placeholder="Email address" type="email" required>
-                </div> <!-- form-group// -->
+                        </li>
+                    </#list>
 
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
-                    </div>
-                    <select class="custom-select" style="max-width: 120px;">
-                        <option value="3">+7</option>
-                    </select>
-                    <input name="phone" class="form-control" placeholder="Phone number" type="text" required>
-                </div> <!-- form-group// -->
+                <#else>
+                    <li>
+                        <a class="list-group-item list-group-item-action">
+                            <div id="outer" class="container">
+                                <div id="inner">
+                                    <p>Зарегестрируйтесь на мероприятие!</p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </#if>
+            </div>
 
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                    </div>
-                    <input name="password" class="form-control" placeholder="Create password" type="password" required>
-                </div> <!-- form-group// -->
+            <div class="column right" id="right">
+                <div class="container">
 
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                    </div>
-                    <input name="repeatPassword" class="form-control" placeholder="Repeat password" type="password"
-                           required>
-                </div> <!-- form-group// -->
+                    <button style="display: none" id="buttonRegister"
+                    <#--onclick="onRegisterClicked(event)"-->
+                            type="button" class="btn btn-success">Register
+                    </button>
 
-                <br>
+                    <button style="display: none" id="buttonUnRegister"
+                    <#--onclick="onUnRegisterClicked(event)"-->
+                            type="button" class="btn btn-success">Unregister
+                    </button>
 
-                <button type="submit" class="btn btn-primary btn-block"> Create Account</button>
-
-                <p class="text-center">Have an account? <a href="/login">Log In</a></p>
-            </form>
-        </article>
-    </div> <!-- card.// -->
-
+                    <button style="display: none" id="buttonDelete"
+                            type="button" class="btn btn-danger">Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
     <br>
     <br>
 

@@ -30,7 +30,6 @@ public class MainScreenController {
 
         if (!events.isEmpty()) {
             model.addAttribute("events", events);
-            model.addAttribute("user_id", userId);
             model.addAttribute("firstEvent", events.get(0));
             return "main";
         } else return "redirect:/event/new";

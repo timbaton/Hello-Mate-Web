@@ -18,7 +18,7 @@ import java.util.Optional;
  * Created by timurbadretdinov on Jun, 2019
  **/
 @Controller
-public class ProfileController {
+public class EditProfileController {
 
     @Autowired
     UserService userService;
@@ -26,21 +26,14 @@ public class ProfileController {
     @Autowired
     UserRepository userRepository;
 
-    @GetMapping("/profile")
-    public String openProfile(ModelMap model, Authentication authentication) {
+    @GetMapping("/profile/edit")
+    public String openEditProfile(ModelMap model, Authentication authentication) {
         int userId = ((CustomUserDetails) authentication.getPrincipal()).getId();
         Optional<Users> usersOptional = userRepository.findById(userId);
         List<Event> eventsRegistered;
 
-        if (usersOptional.isPresent()) {
-            Users user = usersOptional.get();
-            eventsRegistered = user.getEvents();
 
-            model.addAttribute("events", eventsRegistered);
-            model.addAttribute("user", user);
-            return "profile";
-        } else {
-            return "redirect:/login";
-        }
+        return "profile_edit";
+
     }
 }
