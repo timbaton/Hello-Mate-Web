@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/event_new.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/map.css">
 
 </head>
 <body>
@@ -38,7 +39,7 @@
                             <span class="input-group-text"> <i class="fa fa-angellist" aria-hidden="true"></i> </span>
                         </div>
                         <input id="title" name="title" class="form-control" placeholder="Title" type="text" required>
-                    </div> <!-- form-group// -->
+                    </div> <!-- Title// -->
 
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
@@ -46,22 +47,26 @@
                         </div>
                         <input id="description" name="description" class="form-control" placeholder="Description"
                                type="text" required>
-                    </div> <!-- form-group// -->
+                    </div> <!-- Description -->
+
 
                     <div class="form-group input-group">
-                        <div class="input-group-prepend">
+
+                        <div id="map"></div>
+
+                        <div class="input-group-prepend" style="margin-top: 14px">
                             <span class="input-group-text"> <i class="fa fa-map-marker" aria-hidden="true"></i> </span>
                         </div>
                         <input id="location" name="location" class="form-control" placeholder="location" type="text"
-                               required>
-                    </div> <!-- form-group// -->
+                               required style="margin-top: 14px" >
+                    </div> <!-- Location -->
 
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text">  <i class="fa fa-calendar"> </i> </span>
                         </div>
                         <input name="date" class="form-control" placeholder="Date" type="datetime-local" required>
-                    </div> <!-- form-group// -->
+                    </div> <!-- Date -->
 
                 </div>
 
@@ -91,7 +96,10 @@
 
 <#--js-->
 <script src="/js/jQuery.js"></script>
+<script src="/js/event_new.js"></script>
+<script src="/js/project.js"></script>
 
+<#--Bootstrap-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
@@ -99,7 +107,9 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-<script src="/js/event_new.js"></script>
-<script src="/js/project.js"></script>
+<#--MAP-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-wWPEh-3UWpsWdqPZNjgJqKjXqbD62Gs"></script>
+<script src="/js/map.js"></script>
+
 </body>
 </html>

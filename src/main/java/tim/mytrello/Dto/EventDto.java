@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import tim.mytrello.entity.Event;
 import tim.mytrello.entity.Image;
+import tim.mytrello.entity.Location;
 import tim.mytrello.entity.Users;
 
 import java.sql.Timestamp;
@@ -19,7 +20,7 @@ public class EventDto {
     private String title;
 
     private String description;
-    private String location;
+    private LocationDto location;
 
     private Timestamp date;
 
@@ -44,6 +45,6 @@ public class EventDto {
         }
         UserDto from = UserDto.from(event.getOwner());
 
-        return new EventDto(event.getTitle(), event.getDescription(), event.getLocation(), event.getDate(), event.getImages(), from, participants);
+        return new EventDto(event.getTitle(), event.getDescription(), LocationDto.from(event.getLocation()), event.getDate(), event.getImages(), from, participants);
     }
 }

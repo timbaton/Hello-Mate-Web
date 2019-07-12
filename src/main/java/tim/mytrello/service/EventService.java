@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tim.mytrello.entity.Event;
 import tim.mytrello.entity.Image;
+import tim.mytrello.entity.Location;
 import tim.mytrello.entity.Users;
 import tim.mytrello.form.EventNewForm;
 import tim.mytrello.form.RegistrationForm;
@@ -54,6 +55,7 @@ public class EventService {
         List<Image> images = new LinkedList<>();
         Timestamp curTime = new Timestamp(new Date().getTime());
 
+        //Images
         for (String fileName : files) {
             Image image = Image.builder()
                     .path(fileName)
@@ -63,12 +65,13 @@ public class EventService {
             images.add(image);
         }
 
+        //Date
         String dateString = eventNewForm.getDate();
         Date date = null;
         SimpleDateFormat dateFromString = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
         dateFromString.setLenient(false);
         try {
-            date =dateFromString.parse(dateString);
+            date = dateFromString.parse(dateString);
             System.out.println(date);
         } catch (ParseException e) {
             // TODO Auto-generated catch block
@@ -76,7 +79,16 @@ public class EventService {
         }
         assert date != null;
         Timestamp dateTimeStamp = new Timestamp(date.getTime());
-        Event event = new Event(eventNewForm.getTitle(), eventNewForm.getDescription(), eventNewForm.getLocation(), dateTimeStamp, images, owner);
+
+        //location
+        String locationSpring = eventNewForm.getLocation();
+        String[] locationSplit = locationSpring.split("  ");
+        Location location = Location.builder()
+                .lat(Double.valueOf(locationSplit[0]))
+                .lng(Double.valueOf(locationSplit[1]))
+                .build();
+
+        Event event = new Event(eventNewForm.getTitle(), eventNewForm.getDescription(), location, dateTimeStamp, images, owner);
 
         eventRepository.save(event);
     }
@@ -96,7 +108,7 @@ public class EventService {
     }
 
     public void addParticipant(Event event, int userId) {
-        Optional<Users> usersOptional= userRepository.findById(userId);
+        Optional<Users> usersOptional = userRepository.findById(userId);
         Users user = null;
         if (usersOptional.isPresent()) {
             user = usersOptional.get();

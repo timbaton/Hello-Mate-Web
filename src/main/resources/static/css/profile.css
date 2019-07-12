@@ -60,10 +60,17 @@ li {
     display: inline;
 }
 
+.btn {
+    color: white;
+    padding: 12px 12px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
 a.btn:hover {
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -o-transform: scale(1.1);
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -o-transform: scale(0.9);
 }
 
 a.btn {
@@ -77,11 +84,7 @@ a.btn {
 
 .btn-warning {
     align-self: end;
-    height: max-content;
-    align-items: end;
     float: right;
-    display: flex;
-    justify-content: flex-end
 }
 
 .rounded-circle {

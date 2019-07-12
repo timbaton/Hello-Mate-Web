@@ -34,7 +34,6 @@ public class Event {
     private String title;
 
     private String description;
-    private String location;
 
     @NotNull
     private Timestamp date;
@@ -42,6 +41,11 @@ public class Event {
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<Image> images;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    private Location location;
+
 
     @ManyToOne
     @JoinColumn(name = "owner_id")
@@ -62,9 +66,9 @@ public class Event {
             property = "id")
     private List<Users> participants;
 
-    public Event(String title, String  description, String location, Timestamp date, List<Image> images, Users owner) {
+    public Event(String title, String description, Location location, Timestamp date, List<Image> images, Users owner) {
 //        TODO: remake it into map
-        for (Image image: images) {
+        for (Image image : images) {
             image.setEvent(this);
         }
 
