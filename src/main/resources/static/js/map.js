@@ -2,32 +2,22 @@
 // Each marker is labeled with a single alphabetical character.
 var markers = [];
 
-function initialize() {
-    var defoultPosition = {lat: 55.721, lng: 52.373};
-
-
-    var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 16,
-        center: defoultPosition,
-        streetViewControl: false,
-        mapTypeControl: false
-    });
-
+function findUsersPosition(defaultPosition, map) {
     infoWindow = new google.maps.InfoWindow;
 
-    //find user's position
+
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
-            defoultPosition = {
+            defaultPosition = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
 
-            infoWindow.setPosition(defoultPosition);
+            infoWindow.setPosition(defaultPosition);
             infoWindow.setContent('You are here');
             infoWindow.open(map);
-            addMarker(defoultPosition, map);
-            map.setCenter(defoultPosition);
+            addMarker(defaultPosition, map);
+            map.setCenter(defaultPosition);
 
         }, function () {
             handleLocationError(true, infoWindow, map.getCenter());
@@ -36,21 +26,48 @@ function initialize() {
         // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
     }
+    return defaultPosition;
+}
 
-    // This event listener calls addMarker() when the map is clicked.
+function initChooserMap() {
+    var defaultPosition = {lat: 55.721, lng: 52.373};
+
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 16,
+        center: defaultPosition,
+        streetViewControl: false,
+        mapTypeControl: false
+    });
+
+
+    //find user's position and put marker on it
+    var position = findUsersPosition(defaultPosition, map);
+    addMarker(position, map);
+
+
+    //click listener
     google.maps.event.addListener(map, 'click', function (event) {
         addMarker(event.latLng, map);
     });
 
-    addMarker(defoultPosition, map);
-    // Add a marker at the center of the map.
 }
 
-function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 6
+function initStaticMap(lat, lng) {
+
+    var eventPosition = {lat: lat, lng: lng};
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 16,
+        center: eventPosition,
+        streetViewControl: false,
+        mapTypeControl: false
     });
+
+    addMarker(eventPosition, map);
+
+    //find user's position
+    findUsersPosition(eventPosition, map)
 }
 
 // Adds a marker to the map.
@@ -95,5 +112,3 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         'Error: Your browser doesn\'t support geolocation.');
     infoWindow.open(map);
 }
-
-google.maps.event.addDomListener(window, 'load', initialize());

@@ -9,9 +9,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/event_new.css">
-    <link rel="stylesheet" href="/css/map.css">
 
+    <link rel="stylesheet" href="/css/event_new.css">
+<#--map-->
+    <link rel="stylesheet" href="/css/map.css">
 </head>
 <body>
 
@@ -92,7 +93,6 @@
     </div>
 </form>
 
-
 <#--js-->
 <script src="/js/jQuery.js"></script>
 
@@ -105,7 +105,10 @@
         crossorigin="anonymous"></script>
 
 <#--MAP-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-wWPEh-3UWpsWdqPZNjgJqKjXqbD62Gs&callback=initMap"></script>
+<#--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-wWPEh-3UWpsWdqPZNjgJqKjXqbD62Gs&callback=initMap"></script>-->
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-wWPEh-3UWpsWdqPZNjgJqKjXqbD62Gs&callback=initChooserMap">
+</script>
 <script src="/js/map.js"></script>
 
 </body>

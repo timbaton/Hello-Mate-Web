@@ -48,6 +48,10 @@ function fillDetailedEvent(result) {
         $('#buttonRegister').show(410, "linear");
         $('#buttonUnRegister').hide();
     }
+
+    //open map
+    $('#map').show(410, "linear");
+    initStaticMap(event.location.lat, event.location.lng);
 }
 
 function getEventDetails(event) {
