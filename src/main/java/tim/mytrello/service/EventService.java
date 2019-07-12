@@ -82,7 +82,7 @@ public class EventService {
 
         //location
         String locationSpring = eventNewForm.getLocation();
-        String[] locationSplit = locationSpring.split("  ");
+        String[] locationSplit = locationSpring.split(" ");
         Location location = Location.builder()
                 .lat(Double.valueOf(locationSplit[0]))
                 .lng(Double.valueOf(locationSplit[1]))

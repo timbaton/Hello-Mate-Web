@@ -3,19 +3,54 @@
 var markers = [];
 
 function initialize() {
-    var bangalore = { lat: 12.97, lng: 77.59 };
+    var defoultPosition = {lat: 55.721, lng: 52.373};
+
+
     var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 12,
-        center: bangalore
+        zoom: 16,
+        center: defoultPosition,
+        streetViewControl: false,
+        mapTypeControl: false
     });
 
+    infoWindow = new google.maps.InfoWindow;
+
+    //find user's position
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            defoultPosition = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(defoultPosition);
+            infoWindow.setContent('You are here');
+            infoWindow.open(map);
+            addMarker(defoultPosition, map);
+            map.setCenter(defoultPosition);
+
+        }, function () {
+            handleLocationError(true, infoWindow, map.getCenter());
+        });
+    } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
+    }
+
     // This event listener calls addMarker() when the map is clicked.
-    google.maps.event.addListener(map, 'click', function(event) {
+    google.maps.event.addListener(map, 'click', function (event) {
         addMarker(event.latLng, map);
     });
 
+    addMarker(defoultPosition, map);
     // Add a marker at the center of the map.
-    addMarker(bangalore, map);
+}
+
+function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 6
+    });
 }
 
 // Adds a marker to the map.
@@ -29,13 +64,13 @@ function addMarker(location, map) {
         // label: labels[labelIndex++ % labels.length],
         map: map
     });
-    markers.push(marker)
+    markers.push(marker);
 
     saveLocation(marker)
 }
 
 function saveLocation(evt) {
-    document.getElementById('location').value = evt.position.lat().toFixed(3) +" " + evt.position.lng().toFixed(3);
+    document.getElementById('location').value = evt.position.lat().toFixed(3) + " " + evt.position.lng().toFixed(3);
 }
 
 function deleteMarkers() {
@@ -53,4 +88,12 @@ function setMapOnAll(map) {
     }
 }
 
-google.maps.event.addDomListener(window, 'load', initialize);
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(browserHasGeolocation ?
+        'Error: The Geolocation service failed.' :
+        'Error: Your browser doesn\'t support geolocation.');
+    infoWindow.open(map);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize());

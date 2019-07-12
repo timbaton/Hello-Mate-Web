@@ -35,68 +35,23 @@
 
 
         <div class="col-sm-9">
-            <#--<button type="submit" value="/profile/edit" class="btn"><i class="fa fa-trash"></i> Trash</button>-->
+        <#--<button type="submit" value="/profile/edit" class="btn"><i class="fa fa-trash"></i> Trash</button>-->
             <a href="/profile/edit" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i> Edit profile</a>
         </div>
 
     </div>
     <br>
-    <div class="container">
-
-        <br>
-        <div class="row" id="tableContainer">
-
-            <div class="column left" id="left">
-                <#if events?size != 0>
-                    <#list events as event>
-                        <li>
-                            <a style="height: 150px; width: 100%;" id="${event.id}" data-id="${event.id}"
-                               class="list-group-item list-group-item-action"
-                               onclick="getEventDetails(event)">
-                                <h3 style="color: #000000">${event.title}</h3>
-                                <h6 style="text-align: left; vertical-align: bottom">${event.showTimeBefore()}</h6>
-                            </a>
-
-                        </li>
-                    </#list>
-
-                <#else>
-                    <li>
-                        <a class="list-group-item list-group-item-action">
-                            <div id="outer" class="container">
-                                <div id="inner">
-                                    <p>Зарегестрируйтесь на мероприятие!</p>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                </#if>
-            </div>
-
-            <div class="column right" id="right">
-                <div class="container">
-
-                    <button style="display: none" id="buttonRegister"
-                    <#--onclick="onRegisterClicked(event)"-->
-                            type="button" class="btn btn-success">Register
-                    </button>
-
-                    <button style="display: none" id="buttonUnRegister"
-                    <#--onclick="onUnRegisterClicked(event)"-->
-                            type="button" class="btn btn-success">Unregister
-                    </button>
-
-                    <button style="display: none" id="buttonDelete"
-                            type="button" class="btn btn-danger">Delete
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <br>
-    <br>
-
 </div>
+
+<br>
+
+<#--registered events-->
+<#include "view_events.ftl" />
+
+
+<br>
+<br>
+
 <#--js-->
 <script src="/js/jQuery.js"></script>
 
@@ -108,6 +63,5 @@
         crossorigin="anonymous"></script>
 
 <script src="/js/profile.js"></script>
-<#--<script src="/js/project.js"></script>-->
 </body>
 </html>
