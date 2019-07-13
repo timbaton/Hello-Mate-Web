@@ -14,6 +14,7 @@ import tim.mytrello.form.RegistrationForm;
 import tim.mytrello.repository.UserRepository;
 import tim.mytrello.security.CustomUserDetails;
 
+import javax.validation.Valid;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Optional;
@@ -89,6 +90,6 @@ public class UserService implements UserDetailsService {
     }
 
     public boolean checkForUniqueness(String login) {
-        return false;
+        return !userRepository.findUserByLogin(login).isPresent();
     }
 }

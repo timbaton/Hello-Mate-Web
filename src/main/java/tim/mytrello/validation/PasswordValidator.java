@@ -9,7 +9,6 @@ public class PasswordValidator implements ConstraintValidator<Password, String> 
 
     @Override
     public void initialize(Password constraintAnnotation) {
-
     }
 
     @Override
@@ -18,14 +17,14 @@ public class PasswordValidator implements ConstraintValidator<Password, String> 
     }
 
     private boolean correct(String password, ConstraintValidatorContext context) {
-        String pattern = "^[a-z0-9_-]{3,30}$";
+        String pattern = "^[a-z]{3,10}$";
         Pattern p = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
         Matcher m = p.matcher(password);
         if (m.matches()) {
             return true;
         } else {
             context.disableDefaultConstraintViolation();
-            context.buildConstraintViolationWithTemplate("Password should contain from 3 to 30 characters and consist of letters and numbers")
+            context.buildConstraintViolationWithTemplate("Password should contain from 3 to 10 characters and consist of letters")
                     .addConstraintViolation();
             return false;
         }

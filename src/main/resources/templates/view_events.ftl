@@ -66,7 +66,7 @@
                 </div>
 
                 <div class="form-group input-group" style="margin-top: 24px">
-                    <div id="map"></div>
+                    <div id="map" style="display: none"></div>
                 </div> <!-- Location -->
 
 

@@ -86,6 +86,12 @@
                            required>
                 </div> <!-- form-group// -->
 
+                <#if errors??>
+                    <div class="alert alert-danger" role="alert">
+                        <strong>Oh snap!</strong> ${errors}
+                    </div> <!-- errors -->
+                </#if>
+
                 <br>
 
                 <button type="submit" class="btn btn-primary btn-block"> Create Account</button>

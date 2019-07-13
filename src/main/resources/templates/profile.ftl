@@ -10,9 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-
-    <script src="https://kit.fontawesome.com/a0d7d91daf.js"></script>
-
+    
     <link rel="stylesheet" href="/css/profile.css">
 
 </head>
@@ -36,7 +34,7 @@
 
         <div class="col-sm-9">
         <#--<button type="submit" value="/profile/edit" class="btn"><i class="fa fa-trash"></i> Trash</button>-->
-            <a href="/profile/edit" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i> Edit profile</a>
+            <a href="/profile/edit" class="btn btn-warning"><i class="fa fa-pencil"></i></i> Edit profile</a>
         </div>
 
     </div>
