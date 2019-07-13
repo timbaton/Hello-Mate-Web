@@ -24,6 +24,7 @@
 
         <br>
         <br>
+
         <div class="card bg-light">
             <article class="card-body mx-auto" style="max-width: 400px;">
             <#--forms-->
@@ -31,7 +32,6 @@
 
                     <h4 class="card-title mt-3 text-center">Create new event</h4>
                     <p class="text-center">Try your best to interest other people!</p>
-
 
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
@@ -47,7 +47,6 @@
                         <input id="description" name="description" class="form-control" placeholder="Description"
                                type="text" required>
                     </div> <!-- Description -->
-
 
                     <div class="form-group input-group">
 
@@ -66,9 +65,7 @@
                         </div>
                         <input name="date" class="form-control" placeholder="Date" type="datetime-local" required>
                     </div> <!-- Date -->
-
-                </div>
-            <#--forms-->
+                </div><#--forms-->
 
 
             <#--images-->
@@ -107,9 +104,9 @@
 <#--MAP-->
 <#--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-wWPEh-3UWpsWdqPZNjgJqKjXqbD62Gs&callback=initMap"></script>-->
 
+<script src="/js/map.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-wWPEh-3UWpsWdqPZNjgJqKjXqbD62Gs&callback=initChooserMap">
 </script>
-<script src="/js/map.js"></script>
 
 </body>
 </html>

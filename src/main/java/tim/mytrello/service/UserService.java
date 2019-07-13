@@ -87,4 +87,8 @@ public class UserService implements UserDetailsService {
             userRepository.save(user);
         }
     }
+
+    public boolean checkForUniqueness(String login) {
+        return false;
+    }
 }

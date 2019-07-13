@@ -107,8 +107,8 @@
         crossorigin="anonymous"></script>
 
 <#--MAP-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-wWPEh-3UWpsWdqPZNjgJqKjXqbD62Gs&callback=initChooserMap"></script>
 <script src="/js/map.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-wWPEh-3UWpsWdqPZNjgJqKjXqbD62Gs&callback=initChooserMap"></script>
 
 </body>
 </html>
