@@ -41,7 +41,7 @@ public class MyEventController {
                 model.addAttribute("events", ownEvents);
                 model.addAttribute("firstEvent", ownEvents.get(0));
                 return "main";
-            } else return "redirect:/main";
+            } else return "redirect:/event/new";
         } else {
             return "redirect:/login";
         }

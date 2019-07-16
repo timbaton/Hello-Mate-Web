@@ -116,4 +116,14 @@ public class EventService {
         event.addUser(user);
         eventRepository.save(event);
     }
+
+    public void deleteOneParticipant(Integer userId, Event event) {
+        Optional<Users> usersOptional = userRepository.findById(userId);
+        Users user = null;
+        if (usersOptional.isPresent()) {
+            user = usersOptional.get();
+        }
+        event.deleteUser(user);
+        eventRepository.save(event);
+    }
 }

@@ -24,15 +24,14 @@
         <article class="card-body mx-auto" style="max-width: 400px;">
             <h4 class="card-title mt-3 text-center">Create Account</h4>
             <p class="text-center">Get started with your free account</p>
-            <p>
-                <#--<a href="https://oauth.vk.com/authorize?client_id=7057403&display=popup&redirect_uri=https://oauth.vk.com/blank.html&scope=pages&response_type=token&revoke=1&v=5.101&state=123456"-->
-                   <#--class="btn btn-block btn-facebook" onclick="getVKToken()"> <i class="fab fa-facebook-f"></i>   Login-->
-                    <#--via-->
-                    <#--facebook</a> -->
-                <button onclick="authVk(this)"> <i class="fab fa-facebook-f"></i>   Login
+
+            <div class="form-group input-group" align="center">
+                <button class="btn btn-twitter" onclick="registrateVk(this)"><i class="fab fa-vk"></i>  Login
                     via
-                    facebook</button>
-            </p>
+                    vk
+                </button>
+            </div> <!-- form-group// -->
+
             <p class="divider-text">
                 <span class="bg-light">OR</span>
             </p>
@@ -95,7 +94,6 @@
                         <strong>Oh snap!</strong> ${errors}
                     </div> <!-- errors -->
                 </#if>
-
 
                 <div id="myModal" class="modal">
 

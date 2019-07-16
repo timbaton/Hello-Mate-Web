@@ -30,4 +30,12 @@ public class Location {
     @OneToOne(mappedBy = "location")
     private Event event;
 
+    @Override
+    public String toString() {
+        return "Location{" +
+                "id=" + id +
+                ", lat=" + lat +
+                ", lng=" + lng +
+                '}';
+    }
 }

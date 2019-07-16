@@ -29,6 +29,8 @@ function fillDetailedEvent(result) {
 
     document.getElementById("buttonRegister").dataset.event = event.id;
 
+    document.getElementById("buttonUnRegister").dataset.event = event.id;
+
     document.getElementById("buttonDelete").dataset.event = event.id;
 
     if (!isAdmin) {
@@ -66,7 +68,6 @@ function getEventDetails(event) {
             console.log("Success: ", result);
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert('status:' + XMLHttpRequest.status + ', status text: ' + XMLHttpRequest.statusText);
         }
     })
 }
@@ -77,13 +78,8 @@ function onRegisterClicked(event) {
     $.ajax({
         type: "POST",
         url: "/ajax/event_register/" + id,
-        success: function (result) {
-            fillDetailedEvent(result);
-
-            console.log("Success: ", result);
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert('status:' + XMLHttpRequest.status + ', status text: ' + XMLHttpRequest.statusText);
+        success: function (event) {
+            hideRegisterButton();
         }
     })
 }
@@ -94,15 +90,22 @@ function onUnRegisterClicked(event) {
     $.ajax({
         type: "POST",
         url: "/ajax/event_un_register/" + id,
-        success: function (result) {
-            fillDetailedEvent(result);
-
-            console.log("Success: ", result);
+        success: function (event) {
+            showRegisterButton();
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert('status:' + XMLHttpRequest.status + ', status text: ' + XMLHttpRequest.statusText);
         }
     })
+}
+
+function hideRegisterButton() {
+    $('#buttonRegister').hide();
+    $('#buttonUnRegister').show(410, "linear");
+}
+
+function showRegisterButton() {
+    $('#buttonRegister').show(410, "linear");
+    $('#buttonUnRegister').hide();
 }
 
 function onDeleteEventClicked(event) {
@@ -117,7 +120,6 @@ function onDeleteEventClicked(event) {
             console.log("Success: ", result);
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert('status:' + XMLHttpRequest.status + ', status text: ' + XMLHttpRequest.statusText);
         }
     })
 }

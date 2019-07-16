@@ -25,4 +25,12 @@ public class Token {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private Users responsibleUser;
+
+    @Override
+    public String toString() {
+        return "Token{" +
+                "id=" + id +
+                ", token='" + token + '\'' +
+                '}';
+    }
 }

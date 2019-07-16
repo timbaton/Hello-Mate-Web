@@ -70,12 +70,12 @@
 
                     <label for="images">Change your avatar</label>
                     <input name="avatar" type="file" class="form-control-file"
-                           id="avatar" required>
+                           id="avatar">
                 </div>
 
                 <br>
 
-                <button type="submit" class="btn btn-primary btn-block"> Create Event</button>
+                <button type="submit" class="btn btn-primary btn-block">Edit profile</button>
 
                 <br>
                 <br>

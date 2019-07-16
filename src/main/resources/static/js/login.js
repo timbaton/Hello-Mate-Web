@@ -1,4 +1,4 @@
-var getTokenUri = "https://oauth.vk.com/authorize?client_id=7057403&display=popup&redirect_uri=http://localhost:8080/registration&response_type=token&revoke=1&v=5.101";
+var getTokenUri = "https://oauth.vk.com/authorize?client_id=7057403&display=popup&redirect_uri=http://localhost:8080/login&response_type=token&revoke=1&v=5.101";
 
 var token_key = "access_token";
 var user_id_key = "user_id";
@@ -6,9 +6,11 @@ var user_id_key = "user_id";
 var user_id = null;
 var token = null;
 
-function registrateVk(event) {
+document.getElementById("vk").addEventListener("click", function(event){
+    event.preventDefault()
     window.location = getTokenUri;
-}
+
+});
 
 window.onload = function (ev) {
     getAllUrlParams(window.location.href);
@@ -52,7 +54,7 @@ function saveUser(data) {
         dataType: 'json',
         cache: false,
         timeout: 600000,
-        url: "/register_vk",
+        url: "/login_vk",
         success: function (data) {
             window.location.replace("http://localhost:8080/main");
         },

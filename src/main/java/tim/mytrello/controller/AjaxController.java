@@ -93,11 +93,14 @@ public class AjaxController {
 
         //достаем
         Event event = eventService.getEventById(event_id);
+
         //добавляем юзеру эвент
-        userService.addEvent(userId, event);
+//        userService.addEvent(userId, event);
+
+        //добавляем эвенту юзер
         eventService.addParticipant(event, userId);
 
-        return ResponseEntity.ok(event);
+        return ResponseEntity.ok(EventDto.from(event));
     }
 
     @PostMapping(value = "/ajax/event_un_register/{event_id}")
@@ -108,10 +111,13 @@ public class AjaxController {
 
         //достаем
         Event event = eventService.getEventById(event_id);
-        //удаляем у юзера эвент
-        userService.deleteEvent(userId, event);
 
-        return ResponseEntity.ok(event);
+        //удаляем у юзера эвент
+//        userService.deleteEvent(userId, event);
+        //удаляем у эвента юзера
+        eventService.deleteOneParticipant(userId, event);
+
+        return ResponseEntity.ok(EventDto.from(event));
     }
 
     @PostMapping(value = "/ajax/event_delete/{event_id}")

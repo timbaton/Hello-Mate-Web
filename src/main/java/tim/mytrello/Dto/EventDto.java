@@ -8,6 +8,7 @@ import tim.mytrello.entity.Location;
 import tim.mytrello.entity.Users;
 
 import java.sql.Timestamp;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -16,6 +17,8 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class EventDto {
+
+    private Long id;
 
     private String title;
 
@@ -36,15 +39,16 @@ public class EventDto {
 
 
     public static EventDto from(Event event) {
-        List<UserDto> participants = null;
+        List<UserDto> participants = new LinkedList<>();
 
         if (event.getParticipants() != null) {
             for (Users user : event.getParticipants()) {
-                participants.add(UserDto.from(user));
+                UserDto from = UserDto.from(user);
+                participants.add(from);
             }
         }
         UserDto from = UserDto.from(event.getOwner());
 
-        return new EventDto(event.getTitle(), event.getDescription(), LocationDto.from(event.getLocation()), event.getDate(), event.getImages(), from, participants);
+        return new EventDto(event.getId(), event.getTitle(), event.getDescription(), LocationDto.from(event.getLocation()), event.getDate(), event.getImages(), from, participants);
     }
 }
