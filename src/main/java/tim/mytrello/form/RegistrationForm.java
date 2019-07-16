@@ -13,12 +13,13 @@ import javax.validation.constraints.Size;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
+@Builder
 public class RegistrationForm {
 
     @NonNull
     @Login
-    @Size(min = 3, max = 10, message = "Login must consists of 3 to 10 characters")
+    @Size(min = 3, max = 15, message = "Login must consists of 3 to 15 characters")
     private String login;
     @Password
     private String password;

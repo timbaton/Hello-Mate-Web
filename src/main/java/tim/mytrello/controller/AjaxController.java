@@ -1,20 +1,35 @@
 package tim.mytrello.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.servlet.view.RedirectView;
 import tim.mytrello.Dto.EventDto;
 import tim.mytrello.entity.Event;
 import tim.mytrello.entity.Users;
+import tim.mytrello.form.RegistrationForm;
+import tim.mytrello.form.UserVk;
 import tim.mytrello.security.CustomUserDetails;
 import tim.mytrello.service.EventService;
 import tim.mytrello.service.FileStorageService;
 import tim.mytrello.service.UserService;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -25,6 +40,8 @@ import java.util.stream.Collectors;
  **/
 @RestController
 public class AjaxController {
+
+    private static final Logger logger = LoggerFactory.getLogger(AjaxController.class);
 
     @Autowired
     EventService eventService;
@@ -105,4 +122,6 @@ public class AjaxController {
 
         return ResponseEntity.ok().build();
     }
+
+
 }

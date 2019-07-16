@@ -15,7 +15,7 @@ public class LoginForm {
 
     @NonNull
     @Login
-    @Size(min = 3, max = 10, message = "Логин должен иметь от 3 до 10 символов")
+    @Size(min = 3, max = 15, message = "Логин должен иметь от 3 до 15 символов")
     private String login;
 
     @Password

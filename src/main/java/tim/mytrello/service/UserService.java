@@ -41,6 +41,7 @@ public class UserService implements UserDetailsService {
 
     public void registerUser(RegistrationForm registrationUser) {
         String password = new BCryptPasswordEncoder().encode(registrationUser.getPassword());
+
         Users user = Users.builder()
                 .name(registrationUser.getName())
                 .surname(registrationUser.getSurname())
