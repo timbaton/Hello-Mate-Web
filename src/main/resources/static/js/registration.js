@@ -1,4 +1,5 @@
-var getTokenUri = "https://oauth.vk.com/authorize?client_id=7057403&display=popup&redirect_uri=http://localhost:8080/registration&response_type=token&revoke=1&v=5.101";
+var appId = "6770852";
+var getTokenUri = "https://oauth.vk.com/authorize?client_id=" + appId +"&display=popup&redirect_uri=http://localhost:8080/registration&response_type=token&revoke=1&v=5.101";
 
 var token_key = "access_token";
 var user_id_key = "user_id";
