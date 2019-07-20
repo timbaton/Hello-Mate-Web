@@ -3,11 +3,12 @@ package tim.mytrello;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import tim.mytrello.util.properties.FileStorageProperties;
+import tim.mytrello.util.properties.FileStorageProperites;
 
 @SpringBootApplication
 @EnableConfigurationProperties({
-        FileStorageProperties.class
+        FileStorageProperites.class,
+
 })
 public class HelloMateApplication {
 

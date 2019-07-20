@@ -1,5 +1,5 @@
 var appId = "6770852";
-var getTokenUri = "https://oauth.vk.com/authorize?client_id=" + appId +"&display=popup&redirect_uri=http://localhost:8080/login&response_type=token&revoke=1&v=5.101";
+var getTokenUri = "https://oauth.vk.com/authorize?client_id=" + appId + "&display=popup&redirect_uri=http://localhost:8080/login&response_type=token&revoke=1&v=5.101";
 
 
 var token_key = "access_token";
@@ -8,7 +8,7 @@ var user_id_key = "user_id";
 var user_id = null;
 var token = null;
 
-document.getElementById("vk").addEventListener("click", function(event){
+document.getElementById("vk").addEventListener("click", function (event) {
     event.preventDefault();
     window.location = getTokenUri;
 

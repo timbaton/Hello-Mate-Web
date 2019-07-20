@@ -28,6 +28,14 @@ public class ImageService {
 //        return events;
 //    }
 
+    public Image getImageByName(String name) {
+        return imageRepository.findImageByPath(name);
+    }
+
+    public Image getAvatar() {
+        return getImageByName("ava.jpg");
+    }
+
     public Image getImageById(Integer imageId) {
         return imageRepository.findImageById(imageId);
     }

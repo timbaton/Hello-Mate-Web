@@ -31,6 +31,9 @@ public class UserService implements UserDetailsService {
     @Autowired
     private FileStorageService fileStorageService;
 
+    @Autowired
+    private ImageService imageService;
+
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
         Optional<Users> optionalUsers = userRepository.findUserByLogin(login);
@@ -42,12 +45,15 @@ public class UserService implements UserDetailsService {
     public void registerUser(RegistrationForm registrationUser) {
         String password = new BCryptPasswordEncoder().encode(registrationUser.getPassword());
 
+        Image ava = imageService.getAvatar();
+
         Users user = Users.builder()
                 .name(registrationUser.getName())
                 .surname(registrationUser.getSurname())
                 .password(password)
                 .login(registrationUser.getLogin())
                 .mail(registrationUser.getMail())
+                .avatar(ava)
                 .phone(registrationUser.getPhone())
                 .build();
         userRepository.save(user);

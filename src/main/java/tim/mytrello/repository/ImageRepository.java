@@ -9,4 +9,6 @@ import tim.mytrello.entity.Image;
 public interface ImageRepository extends JpaRepository<Image, Integer> {
 
     public Image findImageById(Integer id);
+
+    public Image findImageByPath(String path);
 }

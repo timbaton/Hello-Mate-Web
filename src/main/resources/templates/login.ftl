@@ -51,8 +51,9 @@
                     <button style="width: 100%" id="vk" class="btn btn-twitter"><i class="fab fa-vk"></i></button>
                     <br>
                     <br>
-
-                    <a href="/registration" class="signup-image-link">Create an account</a>
+                    <div class="text-center">
+                        <a href="/registration" class="signup-image-link ">Create an account</a>
+                    </div>
                 </div>
             </div>
         </form>

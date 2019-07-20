@@ -101,11 +101,11 @@ a.btn {
     padding-top: 100%;
 }
 
-.rounded-circle>img {
+.rounded-circle > img {
     position: absolute;
     height: 100%;
     left: 50%;
-    transform: translateX( -50%);
+    transform: translateX(-50%);
     top: 0;
     right: 0;
     margin: 0 auto;
@@ -114,14 +114,14 @@ a.btn {
     transition: opacity .4s;
 }
 
-.rounded-circle>img.tallAndNarrow {
+.rounded-circle > img.tallAndNarrow {
     width: 100%;
     top: 50%;
-    transform: translateX(0) translateY( -50%);
+    transform: translateX(0) translateY(-50%);
     left: 0;
     height: auto;
 }
 
-.rounded-circle>img.loaded {
+.rounded-circle > img.loaded {
     opacity: 1;
 }
