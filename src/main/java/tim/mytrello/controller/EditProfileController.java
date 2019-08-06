@@ -14,6 +14,7 @@ import tim.mytrello.repository.UserRepository;
 import tim.mytrello.security.CustomUserDetails;
 import tim.mytrello.service.UserService;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,7 +36,7 @@ public class EditProfileController {
     }
 
     @PostMapping("/profile/edit")
-    public String editUser(EditProfileForm editProfileForm, Authentication authentication) {
+    public String editUser(EditProfileForm editProfileForm, Authentication authentication) throws IOException {
         int userId = ((CustomUserDetails) authentication.getPrincipal()).getId();
         Optional<Users> usersOptional = userRepository.findById(userId);
 

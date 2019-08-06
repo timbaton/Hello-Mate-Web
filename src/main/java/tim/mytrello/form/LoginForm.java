@@ -1,6 +1,7 @@
 package tim.mytrello.form;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import tim.mytrello.validation.Login;
 import tim.mytrello.validation.Password;
@@ -11,6 +12,7 @@ import javax.validation.constraints.Size;
  * Created by timurbadretdinov on May, 2019
  **/
 @Data
+@NoArgsConstructor
 public class LoginForm {
 
     @NonNull

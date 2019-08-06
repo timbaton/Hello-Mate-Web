@@ -14,6 +14,7 @@ import tim.mytrello.security.CustomUserDetails;
 import tim.mytrello.service.EventService;
 import tim.mytrello.service.FileStorageService;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.Arrays;
 import java.util.List;
@@ -38,7 +39,7 @@ public class NewEventController {
     }
 
     @PostMapping("event/new")
-    public String addNewEvent(EventNewForm eventNewForm, Authentication authentication) {
+    public String addNewEvent(EventNewForm eventNewForm, Authentication authentication) throws IOException {
         CustomUserDetails customUser = (CustomUserDetails) authentication.getPrincipal();
         Integer userId = customUser.getId();
 

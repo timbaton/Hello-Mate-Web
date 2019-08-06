@@ -18,6 +18,7 @@ import tim.mytrello.repository.ImageRepository;
 import tim.mytrello.repository.UserRepository;
 import tim.mytrello.security.CustomUserDetails;
 
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -50,7 +51,7 @@ public class EventService {
         return eventRepository.findEventById(eventId);
     }
 
-    public void addEvent(EventNewForm eventNewForm, Users owner) {
+    public void addEvent(EventNewForm eventNewForm, Users owner) throws IOException {
         List<String> files = fileStorageService.storeFiles(eventNewForm.getImages());
         List<Image> images = new LinkedList<>();
         Timestamp curTime = new Timestamp(new Date().getTime());

@@ -32,7 +32,7 @@ public class Users {
     private String mail;
     private String phone;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "avatar_id", referencedColumnName = "id")
     private Image avatar;
 

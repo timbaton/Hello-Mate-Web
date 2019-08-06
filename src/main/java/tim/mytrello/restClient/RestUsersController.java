@@ -39,4 +39,11 @@ public class RestUsersController {
             return userByLogin.get();
         } else throw new IllegalArgumentException("User not found");
     }
+    @GetMapping(value = "/rest/users/", params = "id")
+    public Users getUserByLogin(@RequestParam(name = "id") int id) {
+        Optional<Users> userById = userRepository.findUserById(id);
+        if (userById.isPresent()) {
+            return userById.get();
+        } else throw new IllegalArgumentException("User not found");
+    }
 }

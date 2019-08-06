@@ -5,12 +5,14 @@ import org.aspectj.weaver.bcel.BcelAccessForInlineMunger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
+import tim.mytrello.entity.Image;
 import tim.mytrello.entity.Token;
 import tim.mytrello.entity.Users;
 import tim.mytrello.form.LoginForm;
 import tim.mytrello.repository.TokenRepository;
 import tim.mytrello.repository.UserRepository;
 import tim.mytrello.restClient.response.LoginResponse;
+import tim.mytrello.service.ImageService;
 
 import java.util.Optional;
 
@@ -22,6 +24,10 @@ public class RestLoginService {
 
     @Autowired
     TokenRepository tokenRepository;
+
+    @Autowired
+    ImageService imageService;
+
     @Autowired
     UserRepository userRepository;
 
@@ -43,10 +49,13 @@ public class RestLoginService {
 
     public LoginResponse register(LoginForm loginForm) {
         String password = new BCryptPasswordEncoder().encode(loginForm.getPassword());
+        Image ava = imageService.getAvatar();
 
         Users user = Users.builder()
                 .login(loginForm.getLogin())
+                .avatar(ava)
                 .password(password).build();
+
         userRepository.save(user);
 
         Token token = getToken(user);

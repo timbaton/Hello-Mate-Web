@@ -128,6 +128,4 @@ public class AjaxController {
 
         return ResponseEntity.ok().build();
     }
-
-
 }

@@ -8,6 +8,7 @@ import tim.mytrello.util.exception.FileStorageException;
 import tim.mytrello.util.properties.FileStorageProperites;
 
 import java.io.IOException;
+import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -31,7 +32,7 @@ public class FileStorageService {
         }
     }
 
-    public List<String> storeFiles(MultipartFile[] files) {
+    public List<String> storeFiles(MultipartFile[] files) throws IOException {
         List<String> names = new LinkedList<>();
         for (MultipartFile file : files) {
             names.add(storeFile(file));
@@ -40,7 +41,7 @@ public class FileStorageService {
         return names;
     }
 
-    public String storeFile(MultipartFile file) {
+    public String storeFile(MultipartFile file) throws IOException {
         // Normalize file name
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 
