@@ -14,7 +14,6 @@ import tim.mytrello.form.RegistrationForm;
 import tim.mytrello.repository.UserRepository;
 import tim.mytrello.security.CustomUserDetails;
 
-import javax.validation.Valid;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -79,7 +78,7 @@ public class UserService implements UserDetailsService {
     }
 
     public void editUser(EditProfileForm editProfileForm, int userId) throws IOException {
-        String avatar = fileStorageService.storeFile(editProfileForm.getAvatar());
+        String avatar = fileStorageService.getFileName(editProfileForm.getAvatar());
         Timestamp dateTimeStamp = new Timestamp(new Date().getTime());
 
         Image image = Image.builder().path(avatar).date(dateTimeStamp).build();

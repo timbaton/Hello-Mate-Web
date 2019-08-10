@@ -25,7 +25,7 @@ public class EventDto {
     private String description;
     private LocationDto location;
 
-    private Timestamp date;
+    private String date;
 
     private List<Image> images;
 
@@ -49,6 +49,6 @@ public class EventDto {
         }
         UserDto from = UserDto.from(event.getOwner());
 
-        return new EventDto(event.getId(), event.getTitle(), event.getDescription(), LocationDto.from(event.getLocation()), event.getDate(), event.getImages(), from, participants);
+        return new EventDto(event.getId(), event.getTitle(), event.getDescription(), LocationDto.from(event.getLocation()), event.getDate().toString(), event.getImages(), from, participants);
     }
 }

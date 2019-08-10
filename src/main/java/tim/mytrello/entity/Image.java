@@ -29,6 +29,7 @@ public class Image {
 
     private String path;
     private Timestamp date;
+    String fileDownloadUri;
 
     @ManyToOne
     @JsonBackReference

@@ -51,19 +51,4 @@ public class RestUsersController {
             return UserDto.from(userById.get());
         } else throw new IllegalArgumentException("User not found");
     }
-
-    @GetMapping(value = "/rest/event", params = "user_id")
-    public List<EventDto> getUserEvents(@RequestParam(name = "user_id") int id) {
-        Optional<Users> userById = userRepository.findUserById(id);
-        if (userById.isPresent()) {
-            Users user = userById.get();
-            List<Event> events = user.getEvents();
-            List<EventDto> eventDtos = new LinkedList<>();
-
-            for (Event event : events) {
-                eventDtos.add(EventDto.from(event));
-            }
-            return eventDtos;
-        } else throw new IllegalArgumentException("User not found");
-    }
 }

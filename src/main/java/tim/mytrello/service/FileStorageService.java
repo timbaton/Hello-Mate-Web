@@ -4,11 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import tim.mytrello.entity.Image;
 import tim.mytrello.util.exception.FileStorageException;
 import tim.mytrello.util.properties.FileStorageProperites;
 
 import java.io.IOException;
-import java.net.URI;
+import java.net.InetAddress;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -32,16 +34,24 @@ public class FileStorageService {
         }
     }
 
-    public List<String> storeFiles(MultipartFile[] files) throws IOException {
-        List<String> names = new LinkedList<>();
+    public List<Image> storeFiles(MultipartFile[] files) throws IOException {
+        List<Image> images = new LinkedList<>();
         for (MultipartFile file : files) {
-            names.add(storeFile(file));
+            String name = getFileName(file);
+
+
+            String fileDownloadUri = "http://" + InetAddress.getLocalHost().getHostAddress() + ":8080/uploads/" + name;
+
+            images.add(Image.builder()
+                    .path(name)
+                    .fileDownloadUri(fileDownloadUri)
+                    .build());
         }
 
-        return names;
+        return images;
     }
 
-    public String storeFile(MultipartFile file) throws IOException {
+    public String getFileName(MultipartFile file) throws IOException {
         // Normalize file name
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 

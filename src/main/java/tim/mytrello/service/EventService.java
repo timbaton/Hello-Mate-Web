@@ -52,18 +52,16 @@ public class EventService {
     }
 
     public void addEvent(EventNewForm eventNewForm, Users owner) throws IOException {
-        List<String> files = fileStorageService.storeFiles(eventNewForm.getImages());
-        List<Image> images = new LinkedList<>();
+        List<Image> images = fileStorageService.storeFiles(eventNewForm.getImages());
         Timestamp curTime = new Timestamp(new Date().getTime());
 
         //Images
-        for (String fileName : files) {
-            Image image = Image.builder()
-                    .path(fileName)
+        for (Image fileName : images) {
+            Image.builder()
+                    .path(fileName.getPath())
+                    .fileDownloadUri(fileName.getFileDownloadUri())
                     .date(curTime)
                     .build();
-
-            images.add(image);
         }
 
         //Date
