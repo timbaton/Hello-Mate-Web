@@ -115,7 +115,7 @@ public class AjaxController {
         //удаляем у юзера эвент
 //        userService.deleteEvent(userId, event);
         //удаляем у эвента юзера
-        eventService.deleteOneParticipant(userId, event);
+        eventService.deleteOneParticipant(event, userId);
 
         return ResponseEntity.ok(EventDto.from(event));
     }

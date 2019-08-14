@@ -15,8 +15,11 @@ import tim.mytrello.service.EventService;
 import tim.mytrello.service.FileStorageService;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -46,6 +49,22 @@ public class NewEventController {
         Optional<Users> ownerOpt = userRepository.findById(userId);
         if (ownerOpt.isPresent()) {
             Users owner = ownerOpt.get();
+
+            String dateString = eventNewForm.getDate();
+            Date date = null;
+            SimpleDateFormat dateFromString = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+            dateFromString.setLenient(false);
+            try {
+                date = dateFromString.parse(dateString);
+                System.out.println(date);
+            } catch (ParseException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            assert date != null;
+            long dateTimeStamp = date.getTime();
+
+            eventNewForm.setDate(Long.toString(dateTimeStamp));
             eventService.addEvent(eventNewForm, owner);
         } else throw new IllegalArgumentException("User not found");
 

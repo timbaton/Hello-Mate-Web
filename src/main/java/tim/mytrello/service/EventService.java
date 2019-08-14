@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 import tim.mytrello.entity.Event;
 import tim.mytrello.entity.Image;
 import tim.mytrello.entity.Location;
@@ -22,10 +23,7 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * Created by timurbadretdinov on Jun, 2019
@@ -51,33 +49,25 @@ public class EventService {
         return eventRepository.findEventById(eventId);
     }
 
-    public void addEvent(EventNewForm eventNewForm, Users owner) throws IOException {
-        List<Image> images = fileStorageService.storeFiles(eventNewForm.getImages());
-        Timestamp curTime = new Timestamp(new Date().getTime());
+    public Event addEvent(EventNewForm eventNewForm, Users owner) throws IOException {
 
-        //Images
-        for (Image fileName : images) {
-            Image.builder()
-                    .path(fileName.getPath())
-                    .fileDownloadUri(fileName.getFileDownloadUri())
-                    .date(curTime)
-                    .build();
+        MultipartFile[] multipartFiles = eventNewForm.getImages();
+
+        List<Image> images = new LinkedList<>();
+        if (multipartFiles != null) {
+            images = fileStorageService.storeFiles(multipartFiles);
+            Timestamp curTime = new Timestamp(new Date().getTime());
+            //Images
+            for (Image fileName : images) {
+                Image.builder()
+                        .path(fileName.getPath())
+                        .fileDownloadUri(fileName.getFileDownloadUri())
+                        .date(curTime)
+                        .build();
+            }
         }
 
-        //Date
-        String dateString = eventNewForm.getDate();
-        Date date = null;
-        SimpleDateFormat dateFromString = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-        dateFromString.setLenient(false);
-        try {
-            date = dateFromString.parse(dateString);
-            System.out.println(date);
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        assert date != null;
-        Timestamp dateTimeStamp = new Timestamp(date.getTime());
+        Long dateTimeStamp = Long.valueOf(eventNewForm.getDate());
 
         //location
         String locationSpring = eventNewForm.getLocation();
@@ -90,6 +80,7 @@ public class EventService {
         Event event = new Event(eventNewForm.getTitle(), eventNewForm.getDescription(), location, dateTimeStamp, images, owner);
 
         eventRepository.save(event);
+        return event;
     }
 
     @Transactional
@@ -116,7 +107,7 @@ public class EventService {
         eventRepository.save(event);
     }
 
-    public void deleteOneParticipant(Integer userId, Event event) {
+    public void deleteOneParticipant(Event event, Integer userId) {
         Optional<Users> usersOptional = userRepository.findById(userId);
         Users user = null;
         if (usersOptional.isPresent()) {

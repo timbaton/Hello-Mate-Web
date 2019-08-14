@@ -36,7 +36,7 @@ public class Event {
     private String description;
 
     @NotNull
-    private Timestamp date;
+    private Long date;
 
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
@@ -66,7 +66,7 @@ public class Event {
             property = "id")
     private List<Users> participants;
 
-    public Event(String title, String description, Location location, Timestamp date, List<Image> images, Users owner) {
+    public Event(String title, String description, Location location, Long date, List<Image> images, Users owner) {
 //        TODO: remake it into map
         for (Image image : images) {
             image.setEvent(this);
@@ -85,7 +85,7 @@ public class Event {
 
         String result = "";
 
-        Long res = Math.abs(date.getTime() - curDate) / 1000;
+        Long res = Math.abs(date - curDate) / 1000;
 
 // get total days between two dates
         double days = Math.floor(res / 86400);
