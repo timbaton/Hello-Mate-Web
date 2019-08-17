@@ -18,6 +18,7 @@ import java.util.List;
 public class UserDto {
 
     private int id;
+    private String login;
     private String name;
     private String surname;
     private String mail;
@@ -32,6 +33,6 @@ public class UserDto {
     public static UserDto from(Users user) {
         Image image = user.getAvatar();
         ImageDto avatar = ImageDto.from(image);
-        return new UserDto(user.getId(), user.getName(), user.getSurname(), user.getMail(), user.getPhone(), avatar);
+        return new UserDto(user.getId(), user.getLogin(), user.getName(), user.getSurname(), user.getMail(), user.getPhone(), avatar);
     }
 }

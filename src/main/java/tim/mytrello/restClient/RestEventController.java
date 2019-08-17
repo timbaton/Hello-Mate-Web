@@ -39,10 +39,12 @@ public class RestEventController {
         Optional<Users> userById = userRepository.findUserById(id);
         if (userById.isPresent()) {
             Users user = userById.get();
+            List<Event> ownEvents = user.getOwnEvents();
             List<Event> events = user.getEvents();
+            ownEvents.addAll(events);
             List<EventDto> eventDtos = new LinkedList<>();
 
-            for (Event event : events) {
+            for (Event event : ownEvents) {
                 eventDtos.add(EventDto.from(event));
             }
             return eventDtos;
@@ -94,5 +96,11 @@ public class RestEventController {
 
             return ResponseEntity.ok(EventDto.from(eventSaved));
         } else throw new IllegalArgumentException("User not found");
+    }
+
+    @PostMapping(value = "/rest/event_delete", params = "event_id")
+    public ResponseEntity<Object> deleteEvent(@RequestParam(name = "event_id") Integer event_id) throws IOException {
+        eventService.deleteEvent(event_id.longValue());
+        return ResponseEntity.ok(true);
     }
 }

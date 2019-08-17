@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import tim.mytrello.entity.Event;
 import tim.mytrello.entity.Image;
 import tim.mytrello.entity.Users;
@@ -77,26 +78,42 @@ public class UserService implements UserDetailsService {
         }
     }
 
-    public void editUser(EditProfileForm editProfileForm, int userId) throws IOException {
-        String avatar = fileStorageService.getFileName(editProfileForm.getAvatar());
-        Timestamp dateTimeStamp = new Timestamp(new Date().getTime());
-
-        Image image = Image.builder().path(avatar).date(dateTimeStamp).build();
-
+    public Users editUser(EditProfileForm editProfileForm, int userId) {
         Optional<Users> userOptional = userRepository.findById(userId);
         if (userOptional.isPresent()) {
             Users user = userOptional.get();
 
-            user.setAvatar(image);
             user.setName(editProfileForm.getName());
             user.setSurname(editProfileForm.getSurname());
             user.setMail(editProfileForm.getMail());
             user.setPhone(editProfileForm.getPhone());
             userRepository.save(user);
+
+            return userRepository.findById(userId).get();
         }
+
+        return null;
     }
 
     public boolean checkForUniqueness(String login) {
         return !userRepository.findUserByLogin(login).isPresent();
+    }
+
+    public Users updateAvatar(Integer userId, MultipartFile image) throws IOException {
+        String avatar = fileStorageService.getFileName(image);
+        Timestamp dateTimeStamp = new Timestamp(new Date().getTime());
+
+        Image ava = Image.builder().path(avatar).date(dateTimeStamp).build();
+
+        Optional<Users> userOptional = userRepository.findById(userId);
+        if (userOptional.isPresent()) {
+            Users user = userOptional.get();
+
+            user.setAvatar(ava);
+            userRepository.save(user);
+
+            return userRepository.findById(userId).get();
+        }
+        return null;
     }
 }

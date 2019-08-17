@@ -27,7 +27,7 @@ public class EventDto {
 
     private String date;
 
-    private List<Image> images;
+    private List<ImageDto> images;
 
     private UserDto owner;
 
@@ -40,6 +40,7 @@ public class EventDto {
 
     public static EventDto from(Event event) {
         List<UserDto> participants = new LinkedList<>();
+        List<ImageDto> images = new LinkedList<>();
 
         if (event.getParticipants() != null) {
             for (Users user : event.getParticipants()) {
@@ -47,8 +48,16 @@ public class EventDto {
                 participants.add(from);
             }
         }
+
+        if (event.getImages() != null) {
+            for (Image image : event.getImages()) {
+                ImageDto from = ImageDto.from(image);
+                images.add(from);
+            }
+        }
+
         UserDto from = UserDto.from(event.getOwner());
 
-        return new EventDto(event.getId(), event.getTitle(), event.getDescription(), LocationDto.from(event.getLocation()), event.getDate().toString(), event.getImages(), from, participants);
+        return new EventDto(event.getId(), event.getTitle(), event.getDescription(), LocationDto.from(event.getLocation()), event.getDate().toString(), images, from, participants);
     }
 }

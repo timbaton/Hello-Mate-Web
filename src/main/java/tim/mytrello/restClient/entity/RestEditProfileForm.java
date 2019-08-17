@@ -1,4 +1,4 @@
-package tim.mytrello.form;
+package tim.mytrello.restClient.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,8 +11,9 @@ import org.springframework.web.multipart.MultipartFile;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class EditProfileForm {
+public class RestEditProfileForm {
 
+    private Integer id;
     private String name;
     private String surname;
     private String mail;
